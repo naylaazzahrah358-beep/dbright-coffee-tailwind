@@ -22,18 +22,22 @@
                         heading: ['Poppins', 'sans-serif'],
                     },
                     colors: {
-                        brand: {
-                            50: '#fffbeb',
-                            100: '#fef3c7',
-                            200: '#fde68a',
-                            300: '#fcd34d',
-                            400: '#fbbf24',
-                            500: '#f59e0b',
-                            600: '#d97706',
-                            700: '#b45309',
-                            800: '#92400e',
-                            900: '#78350f',
-                            dark: '#1c130d',
+                        cream: {
+                            50: '#FDFBF7',
+                            100: '#FAF6EE',
+                            200: '#F4ECE1',
+                            300: '#EAE0D0',
+                            400: '#DECDB5',
+                            500: '#CBB496',
+                            600: '#A98D6C',
+                            700: '#846747',
+                            800: '#5C442D',
+                            900: '#382819',
+                        },
+                        coffee: {
+                            light: '#B08968',
+                            DEFAULT: '#7F5539',
+                            dark: '#4A3525',
                         }
                     }
                 }
@@ -41,64 +45,64 @@
         }
     </script>
 </head>
-<body class="font-sans text-slate-800 bg-white antialiased selection:bg-amber-600 selection:text-white">
+<body class="font-sans text-stone-800 bg-cream-50 antialiased selection:bg-coffee selection:text-white">
 
-    <!-- TOP PROMO BAR -->
-    <aside class="bg-amber-600 text-white text-xs md:text-sm py-2 px-4 text-center font-medium border-b border-amber-700">
+    <!-- TOP PROMO BAR (Tema Cream & Coffee) -->
+    <aside class="bg-cream-200 text-stone-800 text-xs md:text-sm py-2 px-4 text-center font-medium border-b border-cream-300">
         <div class="max-w-7xl mx-auto flex items-center justify-center gap-2 flex-wrap">
-            <span class="px-2 py-0.5 text-xs font-bold bg-white text-amber-800 uppercase tracking-wider">Promo</span>
+            <span class="px-2 py-0.5 text-xs font-bold bg-white text-coffee-dark border border-cream-300 uppercase tracking-wider">Promo</span>
             <span>Diskon 20% Pembelian Pertama & Gratis Ekstra Topping Setiap Hari Jumat!</span>
-            <a href="#menu" class="underline font-bold hover:text-amber-100 ml-1">Lihat Menu &rarr;</a>
+            <a href="#menu" class="underline font-bold text-coffee-dark hover:text-coffee ml-1">Lihat Menu &rarr;</a>
         </div>
     </aside>
 
-    <!-- NAVBAR (Lurus tanpa rounded) -->
-    <header class="sticky top-0 z-40 bg-white border-b border-slate-200 shadow-sm">
+    <!-- NAVBAR (Putih Bersih & Aksen Cream) -->
+    <header class="sticky top-0 z-40 bg-white border-b border-cream-200 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
-                <!-- Brand Text Logo (Bersih tanpa logo AI) -->
+                <!-- Brand Text Logo -->
                 <a href="#" class="flex flex-col">
-                    <span class="font-heading font-extrabold text-2xl tracking-tight text-slate-900 leading-none">
-                        D'BRIGHT <span class="text-amber-600">COFFEE</span>
+                    <span class="font-heading font-extrabold text-2xl tracking-tight text-stone-900 leading-none">
+                        D'BRIGHT <span class="text-coffee">COFFEE</span>
                     </span>
-                    <span class="text-[11px] font-semibold text-slate-500 tracking-wider uppercase mt-1">Artisan Drink & Coffee</span>
+                    <span class="text-[11px] font-semibold text-stone-500 tracking-wider uppercase mt-1">Artisan Drink & Coffee</span>
                 </a>
 
                 <!-- Desktop Menu Navigation -->
-                <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-700">
-                    <a href="#beranda" class="hover:text-amber-600 transition-colors">Beranda</a>
-                    <a href="#keunggulan" class="hover:text-amber-600 transition-colors">Keunggulan</a>
-                    <a href="#menu" class="hover:text-amber-600 transition-colors">Menu Favorit</a>
-                    <a href="#promo" class="hover:text-amber-600 transition-colors">Paket Hemat</a>
-                    <a href="#testimoni" class="hover:text-amber-600 transition-colors">Testimoni</a>
-                    <a href="#kontak" class="hover:text-amber-600 transition-colors">Lokasi & Kontak</a>
+                <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-stone-700">
+                    <a href="#beranda" class="hover:text-coffee transition-colors">Beranda</a>
+                    <a href="#keunggulan" class="hover:text-coffee transition-colors">Keunggulan</a>
+                    <a href="#menu" class="hover:text-coffee transition-colors">Menu Favorit</a>
+                    <a href="#promo" class="hover:text-coffee transition-colors">Paket Hemat</a>
+                    <a href="#testimoni" class="hover:text-coffee transition-colors">Testimoni</a>
+                    <a href="#kontak" class="hover:text-coffee transition-colors">Lokasi & Kontak</a>
                 </nav>
 
-                <!-- Action Button (Kotak Tegak) -->
+                <!-- Action Button -->
                 <div class="hidden lg:flex items-center gap-4">
-                    <button onclick="openOrderModal('D\'Bright Choco Frappe')" class="bg-amber-600 hover:bg-amber-700 text-white font-bold px-6 py-2.5 border border-amber-700 transition">
+                    <button onclick="openOrderModal('D\'Bright Choco Frappe')" class="bg-coffee hover:bg-coffee-dark text-white font-bold px-6 py-2.5 border border-coffee-dark transition">
                         Pesan Sekarang
                     </button>
                 </div>
 
                 <!-- Mobile Hamburger Button -->
-                <button id="mobileMenuBtn" aria-label="Buka Menu" class="md:hidden p-2 text-slate-800 border border-slate-300 hover:bg-slate-100 transition font-bold text-sm">
+                <button id="mobileMenuBtn" aria-label="Buka Menu" class="md:hidden p-2 text-stone-800 border border-cream-300 hover:bg-cream-100 transition font-bold text-sm bg-white">
                     MENU
                 </button>
             </div>
         </div>
 
         <!-- Mobile Navigation Drawer -->
-        <div id="mobileMenu" class="hidden md:hidden border-t border-slate-200 bg-white px-6 py-5 shadow-lg">
-            <div class="flex flex-col gap-4 text-base font-semibold text-slate-800">
-                <a href="#beranda" class="hover:text-amber-600 py-1" onclick="toggleMobileMenu()">Beranda</a>
-                <a href="#keunggulan" class="hover:text-amber-600 py-1" onclick="toggleMobileMenu()">Keunggulan</a>
-                <a href="#menu" class="hover:text-amber-600 py-1" onclick="toggleMobileMenu()">Menu Favorit</a>
-                <a href="#promo" class="hover:text-amber-600 py-1" onclick="toggleMobileMenu()">Paket Hemat</a>
-                <a href="#testimoni" class="hover:text-amber-600 py-1" onclick="toggleMobileMenu()">Testimoni</a>
-                <a href="#kontak" class="hover:text-amber-600 py-1" onclick="toggleMobileMenu()">Lokasi & Kontak</a>
-                <div class="pt-3 border-t border-slate-200">
-                    <button onclick="openOrderModal('D\'Bright Choco Frappe'); toggleMobileMenu();" class="w-full bg-amber-600 text-white font-bold py-3 text-center">
+        <div id="mobileMenu" class="hidden md:hidden border-t border-cream-200 bg-white px-6 py-5 shadow-lg">
+            <div class="flex flex-col gap-4 text-base font-semibold text-stone-800">
+                <a href="#beranda" class="hover:text-coffee py-1" onclick="toggleMobileMenu()">Beranda</a>
+                <a href="#keunggulan" class="hover:text-coffee py-1" onclick="toggleMobileMenu()">Keunggulan</a>
+                <a href="#menu" class="hover:text-coffee py-1" onclick="toggleMobileMenu()">Menu Favorit</a>
+                <a href="#promo" class="hover:text-coffee py-1" onclick="toggleMobileMenu()">Paket Hemat</a>
+                <a href="#testimoni" class="hover:text-coffee py-1" onclick="toggleMobileMenu()">Testimoni</a>
+                <a href="#kontak" class="hover:text-coffee py-1" onclick="toggleMobileMenu()">Lokasi & Kontak</a>
+                <div class="pt-3 border-t border-cream-200">
+                    <button onclick="openOrderModal('D\'Bright Choco Frappe'); toggleMobileMenu();" class="w-full bg-coffee text-white font-bold py-3 text-center">
                         Pesan via WhatsApp
                     </button>
                 </div>
@@ -106,92 +110,92 @@
         </div>
     </header>
 
-    <!-- HERO SECTION -->
-    <section id="beranda" class="pt-12 pb-16 lg:py-20 bg-stone-50 border-b border-slate-200">
+    <!-- HERO SECTION (Nuansa Cream Lembut) -->
+    <section id="beranda" class="pt-12 pb-16 lg:py-20 bg-cream-100 border-b border-cream-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid lg:grid-cols-12 gap-12 items-center">
                 
                 <!-- Left Column: Copywriting & CTA -->
                 <div class="lg:col-span-7 text-center lg:text-left">
-                    <!-- Category Header -->
-                    <div class="inline-block border border-amber-600 bg-amber-50 px-3 py-1 text-amber-800 text-xs font-bold uppercase tracking-wider mb-6">
+                    <!-- Badge Kategori -->
+                    <div class="inline-block border border-cream-300 bg-white px-3 py-1 text-coffee-dark text-xs font-bold uppercase tracking-wider mb-6">
                         Minuman Segar & Kopi Pilihan
                     </div>
 
                     <!-- Main Headline -->
-                    <h1 class="font-heading font-extrabold text-3xl sm:text-5xl lg:text-5xl text-slate-900 tracking-tight leading-tight mb-6">
+                    <h1 class="font-heading font-extrabold text-3xl sm:text-5xl lg:text-5xl text-stone-900 tracking-tight leading-tight mb-6">
                         Segarkan Harimu Bersama <br class="hidden sm:inline">
-                        <span class="text-amber-700">D'BRIGHT COFFEE</span>
+                        <span class="text-coffee">D'BRIGHT COFFEE</span>
                     </h1>
 
                     <!-- Subtitle -->
-                    <p class="text-slate-600 text-base sm:text-lg font-normal leading-relaxed mb-8 max-w-2xl mx-auto lg:mx-0">
+                    <p class="text-stone-600 text-base sm:text-lg font-normal leading-relaxed mb-8 max-w-2xl mx-auto lg:mx-0">
                         Menyajikan aneka racikan kopi artisan, Blended Frappe dengan whipped cream melimpah, hingga mocktail buah tropis super segar. Kualitas rasa premium dengan harga yang bersahabat.
                     </p>
 
-                    <!-- Features Pills (Kotak) -->
-                    <div class="flex flex-wrap items-center justify-center lg:justify-start gap-3 mb-8 text-xs sm:text-sm text-slate-800 font-medium">
-                        <div class="bg-white px-3.5 py-2 border border-slate-300">
+                    <!-- Features Pills (Kotak Putih di atas Cream) -->
+                    <div class="flex flex-wrap items-center justify-center lg:justify-start gap-3 mb-8 text-xs sm:text-sm text-stone-800 font-medium">
+                        <div class="bg-white px-3.5 py-2 border border-cream-300">
                             100% Bahan Berkualitas & Halal
                         </div>
-                        <div class="bg-white px-3.5 py-2 border border-slate-300">
+                        <div class="bg-white px-3.5 py-2 border border-cream-300">
                             Bisa Atur Sugar & Ice Level
                         </div>
-                        <div class="bg-white px-3.5 py-2 border border-slate-300">
+                        <div class="bg-white px-3.5 py-2 border border-cream-300">
                             Harga Mulai Rp 10.000,-
                         </div>
                     </div>
 
                     <!-- CTA Buttons (Kotak) -->
                     <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-                        <button onclick="openOrderModal('D\'Bright Choco Frappe')" class="w-full sm:w-auto bg-amber-600 hover:bg-amber-700 text-white font-bold px-8 py-3.5 border border-amber-700 transition">
+                        <button onclick="openOrderModal('D\'Bright Choco Frappe')" class="w-full sm:w-auto bg-coffee hover:bg-coffee-dark text-white font-bold px-8 py-3.5 border border-coffee-dark transition">
                             Pesan via WhatsApp
                         </button>
-                        <a href="#menu" class="w-full sm:w-auto bg-white hover:bg-slate-100 text-slate-900 font-bold px-7 py-3.5 border border-slate-300 text-center transition">
+                        <a href="#menu" class="w-full sm:w-auto bg-white hover:bg-cream-50 text-stone-900 font-bold px-7 py-3.5 border border-cream-300 text-center transition">
                             Lihat Daftar Menu
                         </a>
                     </div>
 
                     <!-- Quick Stats -->
-                    <div class="grid grid-cols-3 gap-4 pt-8 mt-10 border-t border-slate-300 max-w-lg mx-auto lg:mx-0">
+                    <div class="grid grid-cols-3 gap-4 pt-8 mt-10 border-t border-cream-300 max-w-lg mx-auto lg:mx-0">
                         <div>
-                            <p class="font-heading font-extrabold text-2xl text-slate-900">5.000+</p>
-                            <p class="text-xs text-slate-600">Cup Terjual</p>
+                            <p class="font-heading font-extrabold text-2xl text-stone-900">5.000+</p>
+                            <p class="text-xs text-stone-500">Cup Terjual</p>
                         </div>
                         <div>
-                            <p class="font-heading font-extrabold text-2xl text-amber-700">4.9 / 5.0</p>
-                            <p class="text-xs text-slate-600">Rating Pelanggan</p>
+                            <p class="font-heading font-extrabold text-2xl text-coffee">4.9 / 5.0</p>
+                            <p class="text-xs text-stone-500">Rating Pelanggan</p>
                         </div>
                         <div>
-                            <p class="font-heading font-extrabold text-2xl text-slate-900">15+</p>
-                            <p class="text-xs text-slate-600">Varian Rasa</p>
+                            <p class="font-heading font-extrabold text-2xl text-stone-900">15+</p>
+                            <p class="text-xs text-stone-500">Varian Rasa</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Right Column: Product Showcase Banner (Kotak, tanpa melengkung) -->
+                <!-- Right Column: Product Showcase Banner (Kotak, Frame Putih) -->
                 <div class="lg:col-span-5">
-                    <div class="bg-white p-3 border-2 border-slate-300 shadow-md">
+                    <div class="bg-white p-3 border-2 border-cream-300 shadow-md">
                         <!-- Main Product Image -->
-                        <div class="overflow-hidden aspect-[4/5] bg-slate-100 relative">
+                        <div class="overflow-hidden aspect-[4/5] bg-cream-100 relative">
                             <img src="dbright-banner.jpg" alt="D'BRIGHT COFFEE Aneka Varian Minuman Segar dan Frappe" class="w-full h-full object-cover object-center">
                             
-                            <div class="absolute bottom-0 left-0 right-0 bg-slate-900/80 p-4 text-white">
-                                <span class="bg-amber-600 text-white text-[10px] font-bold px-2 py-0.5 uppercase tracking-wider inline-block mb-1">Menu Lengkap</span>
+                            <div class="absolute bottom-0 left-0 right-0 bg-stone-900/85 p-4 text-white">
+                                <span class="bg-coffee text-white text-[10px] font-bold px-2 py-0.5 uppercase tracking-wider inline-block mb-1">Menu Lengkap</span>
                                 <h2 class="font-heading font-bold text-lg leading-snug">Varian Lengkap D'BRIGHT</h2>
-                                <p class="text-xs text-slate-300">Frappe • Mojito • Taro • Thai Tea • Lemon Tea</p>
+                                <p class="text-xs text-stone-300">Frappe • Mojito • Taro • Thai Tea • Lemon Tea</p>
                             </div>
                         </div>
 
                         <!-- Keterangan Banner Bawah -->
-                        <div class="grid grid-cols-2 gap-2 mt-3 pt-3 border-t border-slate-200 text-center text-xs">
-                            <div class="bg-stone-100 p-2 border border-slate-200">
-                                <span class="text-slate-500 block">Kepuasan Rasa</span>
-                                <span class="font-bold text-slate-800">Rating 4.9</span>
+                        <div class="grid grid-cols-2 gap-2 mt-3 pt-3 border-t border-cream-200 text-center text-xs">
+                            <div class="bg-cream-50 p-2 border border-cream-200">
+                                <span class="text-stone-500 block">Kepuasan Rasa</span>
+                                <span class="font-bold text-stone-800">Rating 4.9</span>
                             </div>
-                            <div class="bg-stone-100 p-2 border border-slate-200">
-                                <span class="text-slate-500 block">Harga</span>
-                                <span class="font-bold text-amber-700">Mulai Rp 10.000,-</span>
+                            <div class="bg-cream-50 p-2 border border-cream-200">
+                                <span class="text-stone-500 block">Harga</span>
+                                <span class="font-bold text-coffee">Mulai Rp 10.000,-</span>
                             </div>
                         </div>
                     </div>
@@ -201,52 +205,52 @@
         </div>
     </section>
 
-    <!-- KEUNGGULAN SECTION (Kotak, bersih) -->
-    <section id="keunggulan" class="py-16 bg-white border-b border-slate-200">
+    <!-- KEUNGGULAN SECTION (Putih Bersih) -->
+    <section id="keunggulan" class="py-16 bg-white border-b border-cream-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-2xl mx-auto mb-12">
-                <span class="text-amber-700 font-bold text-xs uppercase tracking-widest border border-amber-600 px-3 py-1">Keunggulan Kami</span>
-                <h2 class="font-heading font-extrabold text-2xl sm:text-3xl text-slate-900 mt-4 mb-3">
+                <span class="text-coffee font-bold text-xs uppercase tracking-widest border border-cream-300 px-3 py-1 bg-cream-50">Keunggulan Kami</span>
+                <h2 class="font-heading font-extrabold text-2xl sm:text-3xl text-stone-900 mt-4 mb-3">
                     Kualitas Minuman & Pelayanan
                 </h2>
-                <p class="text-slate-600 text-sm">
+                <p class="text-stone-600 text-sm">
                     Komitmen kami menyajikan produk minuman berkualitas yang bersih, segar, dan ramah di kantong.
                 </p>
             </div>
 
             <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 <!-- Card 1 -->
-                <div class="bg-stone-50 p-6 border border-slate-300 hover:border-amber-600 transition">
-                    <span class="text-xs font-bold text-amber-700 block mb-2">01. BAHAN BERKUALITAS</span>
-                    <h3 class="font-heading font-bold text-lg text-slate-900 mb-2">Bahan Pilihan</h3>
-                    <p class="text-slate-600 text-xs leading-relaxed">
+                <div class="bg-cream-50 p-6 border border-cream-300 hover:border-coffee transition">
+                    <span class="text-xs font-bold text-coffee block mb-2">01. BAHAN BERKUALITAS</span>
+                    <h3 class="font-heading font-bold text-lg text-stone-900 mb-2">Bahan Pilihan</h3>
+                    <p class="text-stone-600 text-xs leading-relaxed">
                         Menggunakan susu murni segar, buah asli pilihan, serta bubuk cokelat dan taro dengan standar kualitas tinggi.
                     </p>
                 </div>
 
                 <!-- Card 2 -->
-                <div class="bg-stone-50 p-6 border border-slate-300 hover:border-amber-600 transition">
-                    <span class="text-xs font-bold text-amber-700 block mb-2">02. HARGA TERJANGKAU</span>
-                    <h3 class="font-heading font-bold text-lg text-slate-900 mb-2">Harga Bersahabat</h3>
-                    <p class="text-slate-600 text-xs leading-relaxed">
+                <div class="bg-cream-50 p-6 border border-cream-300 hover:border-coffee transition">
+                    <span class="text-xs font-bold text-coffee block mb-2">02. HARGA TERJANGKAU</span>
+                    <h3 class="font-heading font-bold text-lg text-stone-900 mb-2">Harga Bersahabat</h3>
+                    <p class="text-stone-600 text-xs leading-relaxed">
                         Harga sangat terjangkau mulai dari Rp 10.000. Sangat cocok untuk konsumsi harian atau kumpul santai.
                     </p>
                 </div>
 
                 <!-- Card 3 -->
-                <div class="bg-stone-50 p-6 border border-slate-300 hover:border-amber-600 transition">
-                    <span class="text-xs font-bold text-amber-700 block mb-2">03. BEBAS REQUEST</span>
-                    <h3 class="font-heading font-bold text-lg text-slate-900 mb-2">Bebas Atur Rasa</h3>
-                    <p class="text-slate-600 text-xs leading-relaxed">
+                <div class="bg-cream-50 p-6 border border-cream-300 hover:border-coffee transition">
+                    <span class="text-xs font-bold text-coffee block mb-2">03. BEBAS REQUEST</span>
+                    <h3 class="font-heading font-bold text-lg text-stone-900 mb-2">Bebas Atur Rasa</h3>
+                    <p class="text-stone-600 text-xs leading-relaxed">
                         Bisa bebas memilih tingkat kemanisan (Less / Normal Sugar) serta jumlah es batu sesuai selera Anda.
                     </p>
                 </div>
 
                 <!-- Card 4 -->
-                <div class="bg-stone-50 p-6 border border-slate-300 hover:border-amber-600 transition">
-                    <span class="text-xs font-bold text-amber-700 block mb-2">04. HIGIENIS & CEPAT</span>
-                    <h3 class="font-heading font-bold text-lg text-slate-900 mb-2">Penyajian Cepat</h3>
-                    <p class="text-slate-600 text-xs leading-relaxed">
+                <div class="bg-cream-50 p-6 border border-cream-300 hover:border-coffee transition">
+                    <span class="text-xs font-bold text-coffee block mb-2">04. HIGIENIS & CEPAT</span>
+                    <h3 class="font-heading font-bold text-lg text-stone-900 mb-2">Penyajian Cepat</h3>
+                    <p class="text-stone-600 text-xs leading-relaxed">
                         Diramu secara higienis dalam hitungan menit, siap dinikmati langsung atau dipesan antar.
                     </p>
                 </div>
@@ -254,228 +258,228 @@
         </div>
     </section>
 
-    <!-- MENU KATALOG INTERAKTIF (Kotak, bersih) -->
-    <section id="menu" class="py-16 bg-stone-50 border-b border-slate-200">
+    <!-- MENU KATALOG INTERAKTIF (Latar Cream Lembut) -->
+    <section id="menu" class="py-16 bg-cream-100/60 border-b border-cream-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-2xl mx-auto mb-10">
-                <span class="text-amber-700 font-bold text-xs uppercase tracking-widest border border-amber-600 px-3 py-1 bg-white">Daftar Menu</span>
-                <h2 class="font-heading font-extrabold text-2xl sm:text-3xl text-slate-900 mt-4 mb-3">
+                <span class="text-coffee font-bold text-xs uppercase tracking-widest border border-cream-300 px-3 py-1 bg-white">Daftar Menu</span>
+                <h2 class="font-heading font-extrabold text-2xl sm:text-3xl text-stone-900 mt-4 mb-3">
                     Katalog Minuman D'Bright
                 </h2>
-                <p class="text-slate-600 text-sm">
+                <p class="text-stone-600 text-sm">
                     Pilih kategori di bawah untuk melihat varian minuman yang tersedia.
                 </p>
 
-                <!-- Category Filters (Tab Kotak) -->
+                <!-- Category Filters (Tab Kotak Putih / Coffee) -->
                 <div class="flex items-center justify-center flex-wrap gap-2 mt-6">
-                    <button onclick="filterMenu('all')" class="filter-btn active-filter px-4 py-2 text-xs font-bold bg-amber-600 text-white border border-amber-700" data-category="all">
+                    <button onclick="filterMenu('all')" class="filter-btn active-filter px-4 py-2 text-xs font-bold bg-coffee text-white border border-coffee-dark" data-category="all">
                         Semua Menu (8)
                     </button>
-                    <button onclick="filterMenu('frappe')" class="filter-btn px-4 py-2 text-xs font-bold bg-white text-slate-800 border border-slate-300 hover:border-amber-600" data-category="frappe">
+                    <button onclick="filterMenu('frappe')" class="filter-btn px-4 py-2 text-xs font-bold bg-white text-stone-800 border border-cream-300 hover:border-coffee" data-category="frappe">
                         Blended Frappe
                     </button>
-                    <button onclick="filterMenu('tea')" class="filter-btn px-4 py-2 text-xs font-bold bg-white text-slate-800 border border-slate-300 hover:border-amber-600" data-category="tea">
+                    <button onclick="filterMenu('tea')" class="filter-btn px-4 py-2 text-xs font-bold bg-white text-stone-800 border border-cream-300 hover:border-coffee" data-category="tea">
                         Refreshing Tea & Mojito
                     </button>
-                    <button onclick="filterMenu('creamy')" class="filter-btn px-4 py-2 text-xs font-bold bg-white text-slate-800 border border-slate-300 hover:border-amber-600" data-category="creamy">
+                    <button onclick="filterMenu('creamy')" class="filter-btn px-4 py-2 text-xs font-bold bg-white text-stone-800 border border-cream-300 hover:border-coffee" data-category="creamy">
                         Creamy Series
                     </button>
-                    <button onclick="filterMenu('coffee')" class="filter-btn px-4 py-2 text-xs font-bold bg-white text-slate-800 border border-slate-300 hover:border-amber-600" data-category="coffee">
+                    <button onclick="filterMenu('coffee')" class="filter-btn px-4 py-2 text-xs font-bold bg-white text-stone-800 border border-cream-300 hover:border-coffee" data-category="coffee">
                         Coffee Artisan
                     </button>
                 </div>
             </div>
 
-            <!-- Product Grid (Kotak) -->
+            <!-- Product Grid (Kartu Putih di atas Cream) -->
             <div id="productGrid" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
 
                 <!-- 1. D'Bright Choco Frappe -->
-                <div class="menu-item bg-white border border-slate-300 hover:border-amber-600 transition flex flex-col justify-between" data-category="frappe">
+                <div class="menu-item bg-white border border-cream-300 hover:border-coffee transition flex flex-col justify-between" data-category="frappe">
                     <div class="p-6">
                         <div class="flex items-center justify-between mb-3 text-xs">
-                            <span class="font-bold uppercase tracking-wider text-rose-700 bg-rose-50 px-2 py-0.5 border border-rose-200">Best Seller</span>
-                            <span class="text-slate-500 font-semibold">Rating 5.0</span>
+                            <span class="font-bold uppercase tracking-wider text-coffee-dark bg-cream-100 px-2 py-0.5 border border-cream-300">Best Seller</span>
+                            <span class="text-stone-500 font-semibold">Rating 5.0</span>
                         </div>
-                        <h3 class="font-heading font-bold text-base text-slate-900 mb-1">D'Bright Choco Frappe</h3>
-                        <p class="text-xs text-amber-700 font-semibold mb-2">Whipped Cream & Choco Fudge</p>
-                        <p class="text-slate-600 text-xs leading-relaxed">
+                        <h3 class="font-heading font-bold text-base text-stone-900 mb-1">D'Bright Choco Frappe</h3>
+                        <p class="text-xs text-coffee font-semibold mb-2">Whipped Cream & Choco Fudge</p>
+                        <p class="text-stone-600 text-xs leading-relaxed">
                             Blended dark chocolate kental yang kaya rasa dengan topping whipped cream lembut bertabur saus cokelat fudge.
                         </p>
                     </div>
-                    <div class="p-4 bg-stone-50 border-t border-slate-200 flex items-center justify-between">
+                    <div class="p-4 bg-cream-50 border-t border-cream-200 flex items-center justify-between">
                         <div>
-                            <span class="text-[11px] text-slate-400 line-through block">Rp 22.000</span>
-                            <span class="font-heading font-extrabold text-base text-amber-700">Rp 18.000</span>
+                            <span class="text-[11px] text-stone-400 line-through block">Rp 22.000</span>
+                            <span class="font-heading font-extrabold text-base text-coffee">Rp 18.000</span>
                         </div>
-                        <button onclick="openOrderModal('D\'Bright Choco Frappe')" class="bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold px-4 py-2 border border-amber-700">
+                        <button onclick="openOrderModal('D\'Bright Choco Frappe')" class="bg-coffee hover:bg-coffee-dark text-white text-xs font-bold px-4 py-2 border border-coffee-dark">
                             Pesan
                         </button>
                     </div>
                 </div>
 
                 <!-- 2. Red Velvet Berry Frappe -->
-                <div class="menu-item bg-white border border-slate-300 hover:border-amber-600 transition flex flex-col justify-between" data-category="frappe">
+                <div class="menu-item bg-white border border-cream-300 hover:border-coffee transition flex flex-col justify-between" data-category="frappe">
                     <div class="p-6">
                         <div class="flex items-center justify-between mb-3 text-xs">
-                            <span class="font-bold uppercase tracking-wider text-rose-700 bg-rose-50 px-2 py-0.5 border border-rose-200">Favorit</span>
-                            <span class="text-slate-500 font-semibold">Rating 4.9</span>
+                            <span class="font-bold uppercase tracking-wider text-coffee-dark bg-cream-100 px-2 py-0.5 border border-cream-300">Favorit</span>
+                            <span class="text-stone-500 font-semibold">Rating 4.9</span>
                         </div>
-                        <h3 class="font-heading font-bold text-base text-slate-900 mb-1">Red Velvet Berry Frappe</h3>
-                        <p class="text-xs text-amber-700 font-semibold mb-2">Velvety Cream & Strawberry</p>
-                        <p class="text-slate-600 text-xs leading-relaxed">
+                        <h3 class="font-heading font-bold text-base text-stone-900 mb-1">Red Velvet Berry Frappe</h3>
+                        <p class="text-xs text-coffee font-semibold mb-2">Velvety Cream & Strawberry</p>
+                        <p class="text-stone-600 text-xs leading-relaxed">
                             Rasa khas cake red velvet gurih manis berpadu saus strawberry segar dan lapisan whipped cream tebal.
                         </p>
                     </div>
-                    <div class="p-4 bg-stone-50 border-t border-slate-200 flex items-center justify-between">
+                    <div class="p-4 bg-cream-50 border-t border-cream-200 flex items-center justify-between">
                         <div>
-                            <span class="text-[11px] text-slate-400 line-through block">Rp 22.000</span>
-                            <span class="font-heading font-extrabold text-base text-amber-700">Rp 18.000</span>
+                            <span class="text-[11px] text-stone-400 line-through block">Rp 22.000</span>
+                            <span class="font-heading font-extrabold text-base text-coffee">Rp 18.000</span>
                         </div>
-                        <button onclick="openOrderModal('Red Velvet Berry Frappe')" class="bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold px-4 py-2 border border-amber-700">
+                        <button onclick="openOrderModal('Red Velvet Berry Frappe')" class="bg-coffee hover:bg-coffee-dark text-white text-xs font-bold px-4 py-2 border border-coffee-dark">
                             Pesan
                         </button>
                     </div>
                 </div>
 
                 <!-- 3. Lychee Sparkle Tea -->
-                <div class="menu-item bg-white border border-slate-300 hover:border-amber-600 transition flex flex-col justify-between" data-category="tea">
+                <div class="menu-item bg-white border border-cream-300 hover:border-coffee transition flex flex-col justify-between" data-category="tea">
                     <div class="p-6">
                         <div class="flex items-center justify-between mb-3 text-xs">
-                            <span class="font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-2 py-0.5 border border-emerald-200">Super Segar</span>
-                            <span class="text-slate-500 font-semibold">Rating 4.9</span>
+                            <span class="font-bold uppercase tracking-wider text-coffee-dark bg-cream-100 px-2 py-0.5 border border-cream-300">Super Segar</span>
+                            <span class="text-stone-500 font-semibold">Rating 4.9</span>
                         </div>
-                        <h3 class="font-heading font-bold text-base text-slate-900 mb-1">Lychee Sparkle Tea</h3>
-                        <p class="text-xs text-amber-700 font-semibold mb-2">Buah Leci Asli & Jasmine Tea</p>
-                        <p class="text-slate-600 text-xs leading-relaxed">
+                        <h3 class="font-heading font-bold text-base text-stone-900 mb-1">Lychee Sparkle Tea</h3>
+                        <p class="text-xs text-coffee font-semibold mb-2">Buah Leci Asli & Jasmine Tea</p>
+                        <p class="text-stone-600 text-xs leading-relaxed">
                             Teh melati dingin dengan sirup leci manis alami, disajikan bersama 2 butir buah leci utuh yang segar.
                         </p>
                     </div>
-                    <div class="p-4 bg-stone-50 border-t border-slate-200 flex items-center justify-between">
+                    <div class="p-4 bg-cream-50 border-t border-cream-200 flex items-center justify-between">
                         <div>
-                            <span class="text-[11px] text-slate-400 line-through block">Rp 16.000</span>
-                            <span class="font-heading font-extrabold text-base text-amber-700">Rp 14.000</span>
+                            <span class="text-[11px] text-stone-400 line-through block">Rp 16.000</span>
+                            <span class="font-heading font-extrabold text-base text-coffee">Rp 14.000</span>
                         </div>
-                        <button onclick="openOrderModal('Lychee Sparkle Tea')" class="bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold px-4 py-2 border border-amber-700">
+                        <button onclick="openOrderModal('Lychee Sparkle Tea')" class="bg-coffee hover:bg-coffee-dark text-white text-xs font-bold px-4 py-2 border border-coffee-dark">
                             Pesan
                         </button>
                     </div>
                 </div>
 
                 <!-- 4. Taro Velvet Cream -->
-                <div class="menu-item bg-white border border-slate-300 hover:border-amber-600 transition flex flex-col justify-between" data-category="creamy">
+                <div class="menu-item bg-white border border-cream-300 hover:border-coffee transition flex flex-col justify-between" data-category="creamy">
                     <div class="p-6">
                         <div class="flex items-center justify-between mb-3 text-xs">
-                            <span class="font-bold uppercase tracking-wider text-purple-700 bg-purple-50 px-2 py-0.5 border border-purple-200">Favorit</span>
-                            <span class="text-slate-500 font-semibold">Rating 4.8</span>
+                            <span class="font-bold uppercase tracking-wider text-coffee-dark bg-cream-100 px-2 py-0.5 border border-cream-300">Favorit</span>
+                            <span class="text-stone-500 font-semibold">Rating 4.8</span>
                         </div>
-                        <h3 class="font-heading font-bold text-base text-slate-900 mb-1">Taro Velvet Cream</h3>
-                        <p class="text-xs text-amber-700 font-semibold mb-2">Taro Ungu & Fresh Milk</p>
-                        <p class="text-slate-600 text-xs leading-relaxed">
+                        <h3 class="font-heading font-bold text-base text-stone-900 mb-1">Taro Velvet Cream</h3>
+                        <p class="text-xs text-coffee font-semibold mb-2">Taro Ungu & Fresh Milk</p>
+                        <p class="text-stone-600 text-xs leading-relaxed">
                             Minuman taro ungu wangi yang gurih lembut berpadu susu murni segar yang nikmat dan pas di lidah.
                         </p>
                     </div>
-                    <div class="p-4 bg-stone-50 border-t border-slate-200 flex items-center justify-between">
+                    <div class="p-4 bg-cream-50 border-t border-cream-200 flex items-center justify-between">
                         <div>
-                            <span class="text-[11px] text-slate-400 line-through block">Rp 18.000</span>
-                            <span class="font-heading font-extrabold text-base text-amber-700">Rp 15.000</span>
+                            <span class="text-[11px] text-stone-400 line-through block">Rp 18.000</span>
+                            <span class="font-heading font-extrabold text-base text-coffee">Rp 15.000</span>
                         </div>
-                        <button onclick="openOrderModal('Taro Velvet Cream')" class="bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold px-4 py-2 border border-amber-700">
+                        <button onclick="openOrderModal('Taro Velvet Cream')" class="bg-coffee hover:bg-coffee-dark text-white text-xs font-bold px-4 py-2 border border-coffee-dark">
                             Pesan
                         </button>
                     </div>
                 </div>
 
                 <!-- 5. Green Apple Mint Splash -->
-                <div class="menu-item bg-white border border-slate-300 hover:border-amber-600 transition flex flex-col justify-between" data-category="tea">
+                <div class="menu-item bg-white border border-cream-300 hover:border-coffee transition flex flex-col justify-between" data-category="tea">
                     <div class="p-6">
                         <div class="flex items-center justify-between mb-3 text-xs">
-                            <span class="font-bold uppercase tracking-wider text-teal-700 bg-teal-50 px-2 py-0.5 border border-teal-200">Soda Dingin</span>
-                            <span class="text-slate-500 font-semibold">Rating 4.8</span>
+                            <span class="font-bold uppercase tracking-wider text-coffee-dark bg-cream-100 px-2 py-0.5 border border-cream-300">Soda Dingin</span>
+                            <span class="text-stone-500 font-semibold">Rating 4.8</span>
                         </div>
-                        <h3 class="font-heading font-bold text-base text-slate-900 mb-1">Green Apple Mint Splash</h3>
-                        <p class="text-xs text-amber-700 font-semibold mb-2">Apel Hijau & Sparkling Soda</p>
-                        <p class="text-slate-600 text-xs leading-relaxed">
+                        <h3 class="font-heading font-bold text-base text-stone-900 mb-1">Green Apple Mint Splash</h3>
+                        <p class="text-xs text-coffee font-semibold mb-2">Apel Hijau & Sparkling Soda</p>
+                        <p class="text-stone-600 text-xs leading-relaxed">
                             Sensasi mocktail bersoda rasa apel hijau dengan aroma daun mint dingin yang seketika mengembalikan kesegaran tubuh.
                         </p>
                     </div>
-                    <div class="p-4 bg-stone-50 border-t border-slate-200 flex items-center justify-between">
+                    <div class="p-4 bg-cream-50 border-t border-cream-200 flex items-center justify-between">
                         <div>
-                            <span class="text-[11px] text-slate-400 line-through block">Rp 17.000</span>
-                            <span class="font-heading font-extrabold text-base text-amber-700">Rp 14.000</span>
+                            <span class="text-[11px] text-stone-400 line-through block">Rp 17.000</span>
+                            <span class="font-heading font-extrabold text-base text-coffee">Rp 14.000</span>
                         </div>
-                        <button onclick="openOrderModal('Green Apple Mint Splash')" class="bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold px-4 py-2 border border-amber-700">
+                        <button onclick="openOrderModal('Green Apple Mint Splash')" class="bg-coffee hover:bg-coffee-dark text-white text-xs font-bold px-4 py-2 border border-coffee-dark">
                             Pesan
                         </button>
                     </div>
                 </div>
 
                 <!-- 6. Authentic Thai Tea -->
-                <div class="menu-item bg-white border border-slate-300 hover:border-amber-600 transition flex flex-col justify-between" data-category="creamy">
+                <div class="menu-item bg-white border border-cream-300 hover:border-coffee transition flex flex-col justify-between" data-category="creamy">
                     <div class="p-6">
                         <div class="flex items-center justify-between mb-3 text-xs">
-                            <span class="font-bold uppercase tracking-wider text-amber-800 bg-amber-50 px-2 py-0.5 border border-amber-300">Klasik Gurih</span>
-                            <span class="text-slate-500 font-semibold">Rating 4.9</span>
+                            <span class="font-bold uppercase tracking-wider text-coffee-dark bg-cream-100 px-2 py-0.5 border border-cream-300">Klasik Gurih</span>
+                            <span class="text-stone-500 font-semibold">Rating 4.9</span>
                         </div>
-                        <h3 class="font-heading font-bold text-base text-slate-900 mb-1">Authentic Thai Tea</h3>
-                        <p class="text-xs text-amber-700 font-semibold mb-2">Teh Thailand & Susu Evaporasi</p>
-                        <p class="text-slate-600 text-xs leading-relaxed">
+                        <h3 class="font-heading font-bold text-base text-stone-900 mb-1">Authentic Thai Tea</h3>
+                        <p class="text-xs text-coffee font-semibold mb-2">Teh Thailand & Susu Evaporasi</p>
+                        <p class="text-stone-600 text-xs leading-relaxed">
                             Teh rempah khas Thailand asli yang diseduh pekat, dipadukan kental manis dan lapisan susu evaporasi yang gurih lezat.
                         </p>
                     </div>
-                    <div class="p-4 bg-stone-50 border-t border-slate-200 flex items-center justify-between">
+                    <div class="p-4 bg-cream-50 border-t border-cream-200 flex items-center justify-between">
                         <div>
-                            <span class="text-[11px] text-slate-400 line-through block">Rp 15.000</span>
-                            <span class="font-heading font-extrabold text-base text-amber-700">Rp 12.000</span>
+                            <span class="text-[11px] text-stone-400 line-through block">Rp 15.000</span>
+                            <span class="font-heading font-extrabold text-base text-coffee">Rp 12.000</span>
                         </div>
-                        <button onclick="openOrderModal('Authentic Thai Tea')" class="bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold px-4 py-2 border border-amber-700">
+                        <button onclick="openOrderModal('Authentic Thai Tea')" class="bg-coffee hover:bg-coffee-dark text-white text-xs font-bold px-4 py-2 border border-coffee-dark">
                             Pesan
                         </button>
                     </div>
                 </div>
 
                 <!-- 7. Iced Lemon Tea Supreme -->
-                <div class="menu-item bg-white border border-slate-300 hover:border-amber-600 transition flex flex-col justify-between" data-category="tea">
+                <div class="menu-item bg-white border border-cream-300 hover:border-coffee transition flex flex-col justify-between" data-category="tea">
                     <div class="p-6">
                         <div class="flex items-center justify-between mb-3 text-xs">
-                            <span class="font-bold uppercase tracking-wider text-yellow-800 bg-yellow-50 px-2 py-0.5 border border-yellow-300">Fresh Citrus</span>
-                            <span class="text-slate-500 font-semibold">Rating 4.7</span>
+                            <span class="font-bold uppercase tracking-wider text-coffee-dark bg-cream-100 px-2 py-0.5 border border-cream-300">Fresh Citrus</span>
+                            <span class="text-stone-500 font-semibold">Rating 4.7</span>
                         </div>
-                        <h3 class="font-heading font-bold text-base text-slate-900 mb-1">Iced Lemon Tea Supreme</h3>
-                        <p class="text-xs text-amber-700 font-semibold mb-2">Teh Dingin & Irisan Lemon</p>
-                        <p class="text-slate-600 text-xs leading-relaxed">
+                        <h3 class="font-heading font-bold text-base text-stone-900 mb-1">Iced Lemon Tea Supreme</h3>
+                        <p class="text-xs text-coffee font-semibold mb-2">Teh Dingin & Irisan Lemon</p>
+                        <p class="text-stone-600 text-xs leading-relaxed">
                             Teh hitam dingin pilihan berpadu perasan jeruk lemon asli dan irisan lemon segar yang sarat kesegaran alami.
                         </p>
                     </div>
-                    <div class="p-4 bg-stone-50 border-t border-slate-200 flex items-center justify-between">
+                    <div class="p-4 bg-cream-50 border-t border-cream-200 flex items-center justify-between">
                         <div>
-                            <span class="text-[11px] text-slate-400 line-through block">Rp 12.000</span>
-                            <span class="font-heading font-extrabold text-base text-amber-700">Rp 10.000</span>
+                            <span class="text-[11px] text-stone-400 line-through block">Rp 12.000</span>
+                            <span class="font-heading font-extrabold text-base text-coffee">Rp 10.000</span>
                         </div>
-                        <button onclick="openOrderModal('Iced Lemon Tea Supreme')" class="bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold px-4 py-2 border border-amber-700">
+                        <button onclick="openOrderModal('Iced Lemon Tea Supreme')" class="bg-coffee hover:bg-coffee-dark text-white text-xs font-bold px-4 py-2 border border-coffee-dark">
                             Pesan
                         </button>
                     </div>
                 </div>
 
                 <!-- 8. D'Bright Caramel Macchiato -->
-                <div class="menu-item bg-white border border-slate-300 hover:border-amber-600 transition flex flex-col justify-between" data-category="coffee">
+                <div class="menu-item bg-white border border-cream-300 hover:border-coffee transition flex flex-col justify-between" data-category="coffee">
                     <div class="p-6">
                         <div class="flex items-center justify-between mb-3 text-xs">
-                            <span class="font-bold uppercase tracking-wider text-stone-800 bg-stone-100 px-2 py-0.5 border border-stone-300">Kopi Pilihan</span>
-                            <span class="text-slate-500 font-semibold">Rating 4.9</span>
+                            <span class="font-bold uppercase tracking-wider text-coffee-dark bg-cream-100 px-2 py-0.5 border border-cream-300">Kopi Pilihan</span>
+                            <span class="text-stone-500 font-semibold">Rating 4.9</span>
                         </div>
-                        <h3 class="font-heading font-bold text-base text-slate-900 mb-1">D'Bright Caramel Macchiato</h3>
-                        <p class="text-xs text-amber-700 font-semibold mb-2">Espresso, Milk & Caramel</p>
-                        <p class="text-slate-600 text-xs leading-relaxed">
+                        <h3 class="font-heading font-bold text-base text-stone-900 mb-1">D'Bright Caramel Macchiato</h3>
+                        <p class="text-xs text-coffee font-semibold mb-2">Espresso, Milk & Caramel</p>
+                        <p class="text-stone-600 text-xs leading-relaxed">
                             Double shot espresso aromatik berpadu susu dingin gurih serta sirup dan saus karamel manis legit.
                         </p>
                     </div>
-                    <div class="p-4 bg-stone-50 border-t border-slate-200 flex items-center justify-between">
+                    <div class="p-4 bg-cream-50 border-t border-cream-200 flex items-center justify-between">
                         <div>
-                            <span class="text-[11px] text-slate-400 line-through block">Rp 20.000</span>
-                            <span class="font-heading font-extrabold text-base text-amber-700">Rp 16.000</span>
+                            <span class="text-[11px] text-stone-400 line-through block">Rp 20.000</span>
+                            <span class="font-heading font-extrabold text-base text-coffee">Rp 16.000</span>
                         </div>
-                        <button onclick="openOrderModal('D\'Bright Caramel Macchiato')" class="bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold px-4 py-2 border border-amber-700">
+                        <button onclick="openOrderModal('D\'Bright Caramel Macchiato')" class="bg-coffee hover:bg-coffee-dark text-white text-xs font-bold px-4 py-2 border border-coffee-dark">
                             Pesan
                         </button>
                     </div>
@@ -485,79 +489,79 @@
         </div>
     </section>
 
-    <!-- PROMO & PAKET HEMAT SECTION (Kotak) -->
-    <section id="promo" class="py-16 bg-white border-b border-slate-200">
+    <!-- PROMO & PAKET HEMAT SECTION (Putih Bersih) -->
+    <section id="promo" class="py-16 bg-white border-b border-cream-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-2xl mx-auto mb-12">
-                <span class="text-rose-700 font-bold text-xs uppercase tracking-widest border border-rose-600 px-3 py-1">Paket Promo</span>
-                <h2 class="font-heading font-extrabold text-2xl sm:text-3xl text-slate-900 mt-4 mb-3">
+                <span class="text-coffee font-bold text-xs uppercase tracking-widest border border-cream-300 px-3 py-1 bg-cream-50">Paket Promo</span>
+                <h2 class="font-heading font-extrabold text-2xl sm:text-3xl text-stone-900 mt-4 mb-3">
                     Paket Hemat Pilihan
                 </h2>
-                <p class="text-slate-600 text-sm">
+                <p class="text-stone-600 text-sm">
                     Pilihan paket bundling untuk dinikmati bersama teman dengan harga lebih hemat.
                 </p>
             </div>
 
             <div class="grid md:grid-cols-3 gap-6">
                 <!-- Combo 1 -->
-                <div class="bg-stone-50 p-6 border-2 border-amber-600 flex flex-col justify-between">
+                <div class="bg-cream-50 p-6 border-2 border-coffee flex flex-col justify-between">
                     <div>
-                        <span class="bg-amber-600 text-white text-[10px] font-bold px-2 py-0.5 uppercase tracking-wider inline-block mb-3">Paling Laris</span>
-                        <h3 class="font-heading font-bold text-lg text-slate-900 mb-1">Combo Double Frappe</h3>
-                        <p class="text-xs text-slate-500 mb-4">1x Choco Frappe + 1x Red Velvet Frappe</p>
+                        <span class="bg-coffee text-white text-[10px] font-bold px-2 py-0.5 uppercase tracking-wider inline-block mb-3">Paling Laris</span>
+                        <h3 class="font-heading font-bold text-lg text-stone-900 mb-1">Combo Double Frappe</h3>
+                        <p class="text-xs text-stone-500 mb-4">1x Choco Frappe + 1x Red Velvet Frappe</p>
                         <div class="flex items-baseline gap-2 mb-4">
-                            <span class="font-heading font-black text-2xl text-amber-700">Rp 32.000</span>
-                            <span class="text-xs text-slate-400 line-through">Rp 36.000</span>
+                            <span class="font-heading font-black text-2xl text-coffee">Rp 32.000</span>
+                            <span class="text-xs text-stone-400 line-through">Rp 36.000</span>
                         </div>
-                        <ul class="space-y-2 text-xs text-slate-600 mb-6 border-t border-slate-200 pt-4">
+                        <ul class="space-y-2 text-xs text-stone-600 mb-6 border-t border-cream-200 pt-4">
                             <li>- Gratis Extra Whipped Cream</li>
                             <li>- Bebas Pilih Sugar Level</li>
                             <li>- Hemat Rp 4.000</li>
                         </ul>
                     </div>
-                    <button onclick="openOrderModal('Combo Double Frappe')" class="w-full py-2.5 bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs border border-amber-700">
+                    <button onclick="openOrderModal('Combo Double Frappe')" class="w-full py-2.5 bg-coffee hover:bg-coffee-dark text-white font-bold text-xs border border-coffee-dark">
                         Pesan Paket Ini
                     </button>
                 </div>
 
                 <!-- Combo 2 -->
-                <div class="bg-stone-50 p-6 border border-slate-300 flex flex-col justify-between">
+                <div class="bg-cream-50 p-6 border border-cream-300 flex flex-col justify-between">
                     <div>
-                        <span class="bg-slate-700 text-white text-[10px] font-bold px-2 py-0.5 uppercase tracking-wider inline-block mb-3">Segar</span>
-                        <h3 class="font-heading font-bold text-lg text-slate-900 mb-1">Combo Segar Berdua</h3>
-                        <p class="text-xs text-slate-500 mb-4">1x Lychee Sparkle Tea + 1x Lemon Tea</p>
+                        <span class="bg-stone-700 text-white text-[10px] font-bold px-2 py-0.5 uppercase tracking-wider inline-block mb-3">Segar</span>
+                        <h3 class="font-heading font-bold text-lg text-stone-900 mb-1">Combo Segar Berdua</h3>
+                        <p class="text-xs text-stone-500 mb-4">1x Lychee Sparkle Tea + 1x Lemon Tea</p>
                         <div class="flex items-baseline gap-2 mb-4">
-                            <span class="font-heading font-black text-2xl text-slate-900">Rp 20.000</span>
-                            <span class="text-xs text-slate-400 line-through">Rp 24.000</span>
+                            <span class="font-heading font-black text-2xl text-stone-900">Rp 20.000</span>
+                            <span class="text-xs text-stone-400 line-through">Rp 24.000</span>
                         </div>
-                        <ul class="space-y-2 text-xs text-slate-600 mb-6 border-t border-slate-200 pt-4">
+                        <ul class="space-y-2 text-xs text-stone-600 mb-6 border-t border-cream-200 pt-4">
                             <li>- Topping Buah Leci Asli</li>
                             <li>- Dingin Segar Alami</li>
                             <li>- Hemat Rp 4.000</li>
                         </ul>
                     </div>
-                    <button onclick="openOrderModal('Combo Segar Berdua')" class="w-full py-2.5 bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs border border-slate-900">
+                    <button onclick="openOrderModal('Combo Segar Berdua')" class="w-full py-2.5 bg-stone-900 hover:bg-stone-800 text-white font-bold text-xs border border-stone-900">
                         Pesan Paket Ini
                     </button>
                 </div>
 
                 <!-- Combo 3 -->
-                <div class="bg-stone-50 p-6 border border-slate-300 flex flex-col justify-between">
+                <div class="bg-cream-50 p-6 border border-cream-300 flex flex-col justify-between">
                     <div>
-                        <span class="bg-slate-700 text-white text-[10px] font-bold px-2 py-0.5 uppercase tracking-wider inline-block mb-3">Santai</span>
-                        <h3 class="font-heading font-bold text-lg text-slate-900 mb-1">Combo Teman Santai</h3>
-                        <p class="text-xs text-slate-500 mb-4">1x Caramel Macchiato + 1x Thai Tea</p>
+                        <span class="bg-stone-700 text-white text-[10px] font-bold px-2 py-0.5 uppercase tracking-wider inline-block mb-3">Santai</span>
+                        <h3 class="font-heading font-bold text-lg text-stone-900 mb-1">Combo Teman Santai</h3>
+                        <p class="text-xs text-stone-500 mb-4">1x Caramel Macchiato + 1x Thai Tea</p>
                         <div class="flex items-baseline gap-2 mb-4">
-                            <span class="font-heading font-black text-2xl text-slate-900">Rp 25.000</span>
-                            <span class="text-xs text-slate-400 line-through">Rp 28.000</span>
+                            <span class="font-heading font-black text-2xl text-stone-900">Rp 25.000</span>
+                            <span class="text-xs text-stone-400 line-through">Rp 28.000</span>
                         </div>
-                        <ul class="space-y-2 text-xs text-slate-600 mb-6 border-t border-slate-200 pt-4">
+                        <ul class="space-y-2 text-xs text-stone-600 mb-6 border-t border-cream-200 pt-4">
                             <li>- Espresso Aromatik</li>
                             <li>- Susu Gurih Manis Pas</li>
                             <li>- Hemat Rp 3.000</li>
                         </ul>
                     </div>
-                    <button onclick="openOrderModal('Combo Teman Santai')" class="w-full py-2.5 bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs border border-slate-900">
+                    <button onclick="openOrderModal('Combo Teman Santai')" class="w-full py-2.5 bg-stone-900 hover:bg-stone-800 text-white font-bold text-xs border border-stone-900">
                         Pesan Paket Ini
                     </button>
                 </div>
@@ -565,45 +569,45 @@
         </div>
     </section>
 
-    <!-- CARA PEMESANAN (Kotak) -->
-    <section id="cara-pesan" class="py-14 bg-slate-900 text-white">
+    <!-- CARA PEMESANAN (Cream Gelap / Espresso) -->
+    <section id="cara-pesan" class="py-14 bg-stone-900 text-cream-100 border-b border-cream-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-xl mx-auto mb-10">
-                <span class="text-amber-400 font-bold text-xs uppercase tracking-widest border border-slate-700 px-3 py-1">Panduan Order</span>
-                <h2 class="font-heading font-extrabold text-2xl sm:text-3xl mt-3 mb-2">Cara Memesan</h2>
-                <p class="text-slate-400 text-xs">3 langkah singkat untuk menikmati pesanan Anda.</p>
+                <span class="text-cream-300 font-bold text-xs uppercase tracking-widest border border-stone-700 px-3 py-1">Panduan Order</span>
+                <h2 class="font-heading font-extrabold text-2xl sm:text-3xl mt-3 mb-2 text-white">Cara Memesan</h2>
+                <p class="text-stone-400 text-xs">3 langkah singkat untuk menikmati pesanan Anda.</p>
             </div>
 
             <div class="grid md:grid-cols-3 gap-6 text-center">
                 <!-- Step 1 -->
-                <div class="bg-slate-800 p-6 border border-slate-700">
-                    <div class="w-10 h-10 bg-amber-600 text-white flex items-center justify-center font-bold text-lg mx-auto mb-3">
+                <div class="bg-stone-800 p-6 border border-stone-700">
+                    <div class="w-10 h-10 bg-coffee text-white flex items-center justify-center font-bold text-lg mx-auto mb-3">
                         1
                     </div>
-                    <h3 class="font-heading font-bold text-base mb-2">Pilih Menu</h3>
-                    <p class="text-slate-400 text-xs leading-relaxed">
+                    <h3 class="font-heading font-bold text-base mb-2 text-white">Pilih Menu</h3>
+                    <p class="text-stone-300 text-xs leading-relaxed">
                         Tentukan minuman favoritmu di katalog menu atau paket promo yang tersedia.
                     </p>
                 </div>
 
                 <!-- Step 2 -->
-                <div class="bg-slate-800 p-6 border border-slate-700">
-                    <div class="w-10 h-10 bg-amber-600 text-white flex items-center justify-center font-bold text-lg mx-auto mb-3">
+                <div class="bg-stone-800 p-6 border border-stone-700">
+                    <div class="w-10 h-10 bg-coffee text-white flex items-center justify-center font-bold text-lg mx-auto mb-3">
                         2
                     </div>
-                    <h3 class="font-heading font-bold text-base mb-2">Atur Rasa & Topping</h3>
-                    <p class="text-slate-400 text-xs leading-relaxed">
+                    <h3 class="font-heading font-bold text-base mb-2 text-white">Atur Rasa & Topping</h3>
+                    <p class="text-stone-300 text-xs leading-relaxed">
                         Pilih ukuran cup, tentukan kadar gula (Less / Normal), dan tambahkan topping kesukaan.
                     </p>
                 </div>
 
                 <!-- Step 3 -->
-                <div class="bg-slate-800 p-6 border border-slate-700">
-                    <div class="w-10 h-10 bg-amber-600 text-white flex items-center justify-center font-bold text-lg mx-auto mb-3">
+                <div class="bg-stone-800 p-6 border border-stone-700">
+                    <div class="w-10 h-10 bg-coffee text-white flex items-center justify-center font-bold text-lg mx-auto mb-3">
                         3
                     </div>
-                    <h3 class="font-heading font-bold text-base mb-2">Kirim ke WhatsApp</h3>
-                    <p class="text-slate-400 text-xs leading-relaxed">
+                    <h3 class="font-heading font-bold text-base mb-2 text-white">Kirim ke WhatsApp</h3>
+                    <p class="text-stone-300 text-xs leading-relaxed">
                         Format pesanan terisi otomatis, kirim chat WhatsApp dan pesanan langsung diproses.
                     </p>
                 </div>
@@ -611,122 +615,122 @@
         </div>
     </section>
 
-    <!-- TESTIMONI PELANGGAN (Nama saja, tanpa mahasiswa, tanpa unsur AI) -->
-    <section id="testimoni" class="py-16 bg-white border-b border-slate-200">
+    <!-- TESTIMONI PELANGGAN (Putih & Cream) -->
+    <section id="testimoni" class="py-16 bg-white border-b border-cream-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-2xl mx-auto mb-12">
-                <span class="text-amber-700 font-bold text-xs uppercase tracking-widest border border-amber-600 px-3 py-1">Ulasan</span>
-                <h2 class="font-heading font-extrabold text-2xl sm:text-3xl text-slate-900 mt-4 mb-2">
+                <span class="text-coffee font-bold text-xs uppercase tracking-widest border border-cream-300 px-3 py-1 bg-cream-50">Ulasan</span>
+                <h2 class="font-heading font-extrabold text-2xl sm:text-3xl text-stone-900 mt-4 mb-2">
                     Testimoni Pelanggan
                 </h2>
-                <p class="text-slate-600 text-sm">
+                <p class="text-stone-600 text-sm">
                     Ulasan dari para pelanggan yang telah mencoba menu D'BRIGHT COFFEE.
                 </p>
             </div>
 
             <div class="grid md:grid-cols-3 gap-6">
                 <!-- Testimonial 1 -->
-                <div class="bg-stone-50 p-6 border border-slate-300 flex flex-col justify-between">
+                <div class="bg-cream-50 p-6 border border-cream-300 flex flex-col justify-between">
                     <div>
-                        <div class="text-amber-700 font-bold text-xs mb-3">Rating: 5/5</div>
-                        <p class="text-slate-700 text-xs leading-relaxed italic mb-6">
+                        <div class="text-coffee font-bold text-xs mb-3">Rating: 5/5</div>
+                        <p class="text-stone-700 text-xs leading-relaxed italic mb-6">
                             "Choco Frappe-nya enak banget. Whipped cream-nya melimpah dan rasa cokelatnya pekat. Pas banget untuk teman santai atau ngerjain tugas."
                         </p>
                     </div>
-                    <div class="pt-3 border-t border-slate-200">
-                        <h4 class="font-bold text-sm text-slate-900">Nayla Azzahra R</h4>
+                    <div class="pt-3 border-t border-cream-200">
+                        <h4 class="font-bold text-sm text-stone-900">Nayla Azzahra R</h4>
                     </div>
                 </div>
 
                 <!-- Testimonial 2 -->
-                <div class="bg-stone-50 p-6 border border-slate-300 flex flex-col justify-between">
+                <div class="bg-cream-50 p-6 border border-cream-300 flex flex-col justify-between">
                     <div>
-                        <div class="text-amber-700 font-bold text-xs mb-3">Rating: 5/5</div>
-                        <p class="text-slate-700 text-xs leading-relaxed italic mb-6">
+                        <div class="text-coffee font-bold text-xs mb-3">Rating: 5/5</div>
+                        <p class="text-stone-700 text-xs leading-relaxed italic mb-6">
                             "Lychee Sparkle Tea-nya segar sekali karena ada buah leci aslinya langsung. Pas cuaca lagi panas, langsung segar setelah minum satu cup."
                         </p>
                     </div>
-                    <div class="pt-3 border-t border-slate-200">
-                        <h4 class="font-bold text-sm text-slate-900">Naswa Zahira</h4>
+                    <div class="pt-3 border-t border-cream-200">
+                        <h4 class="font-bold text-sm text-stone-900">Naswa Zahira</h4>
                     </div>
                 </div>
 
                 <!-- Testimonial 3 -->
-                <div class="bg-stone-50 p-6 border border-slate-300 flex flex-col justify-between">
+                <div class="bg-cream-50 p-6 border border-cream-300 flex flex-col justify-between">
                     <div>
-                        <div class="text-amber-700 font-bold text-xs mb-3">Rating: 5/5</div>
-                        <p class="text-slate-700 text-xs leading-relaxed italic mb-6">
+                        <div class="text-coffee font-bold text-xs mb-3">Rating: 5/5</div>
+                        <p class="text-stone-700 text-xs leading-relaxed italic mb-6">
                             "Pelayanannya ramah dan pembuatannya cepat. Rasa manisnya pas di lidah dan selalu jadi pilihan kalau lagi kumpul bareng teman-teman."
                         </p>
                     </div>
-                    <div class="pt-3 border-t border-slate-200">
-                        <h4 class="font-bold text-sm text-slate-900">Abid Aqila</h4>
+                    <div class="pt-3 border-t border-cream-200">
+                        <h4 class="font-bold text-sm text-stone-900">Abid Aqila</h4>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- LOKASI & KONTAK OUTLET (Kotak, bersih tanpa logo/simbol AI) -->
-    <section id="kontak" class="py-16 bg-stone-50">
+    <!-- LOKASI & KONTAK OUTLET (Tema Cream & Putih) -->
+    <section id="kontak" class="py-16 bg-cream-100/70">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-white p-8 border-2 border-slate-300 shadow-sm">
+            <div class="bg-white p-8 border-2 border-cream-300 shadow-sm">
                 <div class="grid lg:grid-cols-12 gap-8 items-center">
                     
                     <div class="lg:col-span-7">
-                        <span class="text-amber-700 font-bold text-xs uppercase tracking-widest border border-amber-600 px-3 py-1">Informasi Kontak</span>
-                        <h2 class="font-heading font-extrabold text-2xl sm:text-3xl text-slate-900 mt-4 mb-3">
+                        <span class="text-coffee font-bold text-xs uppercase tracking-widest border border-cream-300 px-3 py-1 bg-cream-50">Informasi Kontak</span>
+                        <h2 class="font-heading font-extrabold text-2xl sm:text-3xl text-stone-900 mt-4 mb-3">
                             Lokasi & Pemesanan
                         </h2>
-                        <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                        <p class="text-stone-600 text-sm leading-relaxed mb-6">
                             Silakan hubungi kami untuk pesanan harian atau kegiatan kumpul bersama.
                         </p>
 
-                        <div class="space-y-4 text-xs sm:text-sm text-slate-800">
+                        <div class="space-y-4 text-xs sm:text-sm text-stone-800">
                             <!-- Lokasi -->
-                            <div class="p-3 bg-stone-50 border border-slate-200">
-                                <span class="font-bold block text-slate-900 mb-1">Lokasi Outlet:</span>
-                                <span class="text-slate-600">Jln. Mustafa Dg. Bunga / Romang Polong</span>
+                            <div class="p-3 bg-cream-50 border border-cream-200">
+                                <span class="font-bold block text-stone-900 mb-1">Lokasi Outlet:</span>
+                                <span class="text-stone-600">Jln. Mustafa Dg. Bunga / Romang Polong</span>
                             </div>
 
                             <!-- Jam Operasional -->
-                            <div class="p-3 bg-stone-50 border border-slate-200">
-                                <span class="font-bold block text-slate-900 mb-1">Jam Operasional:</span>
-                                <span class="text-slate-600">Setiap Hari (Senin - Minggu) : 09.00 - 22.00 WITA</span>
+                            <div class="p-3 bg-cream-50 border border-cream-200">
+                                <span class="font-bold block text-stone-900 mb-1">Jam Operasional:</span>
+                                <span class="text-stone-600">Setiap Hari (Senin - Minggu) : 09.00 - 22.00 WITA</span>
                             </div>
 
                             <!-- WhatsApp -->
-                            <div class="p-3 bg-stone-50 border border-slate-200">
-                                <span class="font-bold block text-slate-900 mb-1">Kontak WhatsApp:</span>
-                                <a href="https://wa.me/6285705952173" target="_blank" rel="noopener noreferrer" class="text-emerald-700 hover:underline font-bold">
+                            <div class="p-3 bg-cream-50 border border-cream-200">
+                                <span class="font-bold block text-stone-900 mb-1">Kontak WhatsApp:</span>
+                                <a href="https://wa.me/6285705952173" target="_blank" rel="noopener noreferrer" class="text-coffee hover:underline font-bold">
                                     085705952173 (+62 857-0595-2173)
                                 </a>
                             </div>
 
                             <!-- Instagram -->
-                            <div class="p-3 bg-stone-50 border border-slate-200">
-                                <span class="font-bold block text-slate-900 mb-1">Instagram Resmi:</span>
-                                <a href="https://instagram.com/bright_c0ffee" target="_blank" rel="noopener noreferrer" class="text-rose-700 hover:underline font-bold">
+                            <div class="p-3 bg-cream-50 border border-cream-200">
+                                <span class="font-bold block text-stone-900 mb-1">Instagram Resmi:</span>
+                                <a href="https://instagram.com/bright_c0ffee" target="_blank" rel="noopener noreferrer" class="text-coffee hover:underline font-bold">
                                     @bright_c0ffee
                                 </a>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Fast Order Form Box (Kotak, bersih) -->
-                    <div class="lg:col-span-5 bg-slate-900 p-6 text-white border border-slate-800">
-                        <h3 class="font-heading font-extrabold text-xl mb-1">Form Order Cepat</h3>
-                        <p class="text-slate-400 text-xs mb-5">Pilih menu dan kirim langsung ke WhatsApp penjual.</p>
+                    <!-- Fast Order Form Box (Espresso & Cream) -->
+                    <div class="lg:col-span-5 bg-stone-900 p-6 text-cream-100 border border-stone-800">
+                        <h3 class="font-heading font-extrabold text-xl mb-1 text-white">Form Order Cepat</h3>
+                        <p class="text-stone-400 text-xs mb-5">Pilih menu dan kirim langsung ke WhatsApp penjual.</p>
                         
-                        <form id="fastOrderForm" onsubmit="handleDirectOrder(event)" class="space-y-3 text-xs text-slate-800">
+                        <form id="fastOrderForm" onsubmit="handleDirectOrder(event)" class="space-y-3 text-xs text-stone-800">
                             <div>
-                                <label class="block text-white font-semibold mb-1">Nama Pemesan:</label>
-                                <input type="text" id="custName" required placeholder="Nama Anda" class="w-full px-3 py-2 bg-white border border-slate-300 outline-none">
+                                <label class="block text-cream-100 font-semibold mb-1">Nama Pemesan:</label>
+                                <input type="text" id="custName" required placeholder="Nama Anda" class="w-full px-3 py-2 bg-white border border-cream-300 outline-none">
                             </div>
 
                             <div>
-                                <label class="block text-white font-semibold mb-1">Pilihan Menu:</label>
-                                <select id="custDrink" class="w-full px-3 py-2 bg-white border border-slate-300 outline-none">
+                                <label class="block text-cream-100 font-semibold mb-1">Pilihan Menu:</label>
+                                <select id="custDrink" class="w-full px-3 py-2 bg-white border border-cream-300 outline-none">
                                     <option value="D'Bright Choco Frappe (Rp 18.000)">D'Bright Choco Frappe (Rp 18.000)</option>
                                     <option value="Red Velvet Berry Frappe (Rp 18.000)">Red Velvet Berry Frappe (Rp 18.000)</option>
                                     <option value="Lychee Sparkle Tea (Rp 14.000)">Lychee Sparkle Tea (Rp 14.000)</option>
@@ -743,12 +747,12 @@
 
                             <div class="grid grid-cols-2 gap-2">
                                 <div>
-                                    <label class="block text-white font-semibold mb-1">Jumlah:</label>
-                                    <input type="number" id="custQty" value="1" min="1" max="50" class="w-full px-3 py-2 bg-white border border-slate-300 outline-none">
+                                    <label class="block text-cream-100 font-semibold mb-1">Jumlah:</label>
+                                    <input type="number" id="custQty" value="1" min="1" max="50" class="w-full px-3 py-2 bg-white border border-cream-300 outline-none">
                                 </div>
                                 <div>
-                                    <label class="block text-white font-semibold mb-1">Level Gula:</label>
-                                    <select id="custSugar" class="w-full px-3 py-2 bg-white border border-slate-300 outline-none">
+                                    <label class="block text-cream-100 font-semibold mb-1">Level Gula:</label>
+                                    <select id="custSugar" class="w-full px-3 py-2 bg-white border border-cream-300 outline-none">
                                         <option value="Normal Sugar (100%)">Normal (100%)</option>
                                         <option value="Less Sugar (70%)">Less (70%)</option>
                                         <option value="Half Sugar (50%)">Half (50%)</option>
@@ -758,11 +762,11 @@
                             </div>
 
                             <div>
-                                <label class="block text-white font-semibold mb-1">Catatan Tambahan:</label>
-                                <input type="text" id="custNote" placeholder="Contoh: Es sedikit / ekstra sedotan" class="w-full px-3 py-2 bg-white border border-slate-300 outline-none">
+                                <label class="block text-cream-100 font-semibold mb-1">Catatan Tambahan:</label>
+                                <input type="text" id="custNote" placeholder="Contoh: Es sedikit / ekstra sedotan" class="w-full px-3 py-2 bg-white border border-cream-300 outline-none">
                             </div>
 
-                            <button type="submit" class="w-full mt-2 py-3 bg-amber-600 hover:bg-amber-700 text-white font-bold border border-amber-700 transition">
+                            <button type="submit" class="w-full mt-2 py-3 bg-coffee hover:bg-coffee-dark text-white font-bold border border-coffee-dark transition">
                                 Kirim Pesanan ke WhatsApp
                             </button>
                         </form>
@@ -773,21 +777,21 @@
         </div>
     </section>
 
-    <!-- FOOTER (Kotak, bersih) -->
-    <footer class="bg-slate-950 text-slate-400 text-xs pt-12 pb-8 border-t border-slate-800">
+    <!-- FOOTER (Cream Gelap & Putih) -->
+    <footer class="bg-stone-950 text-stone-400 text-xs pt-12 pb-8 border-t border-stone-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
                 <!-- Brand Info -->
                 <div class="md:col-span-2">
                     <span class="font-heading font-black text-xl text-white tracking-tight block mb-2">
-                        D'BRIGHT <span class="text-amber-500">COFFEE</span>
+                        D'BRIGHT <span class="text-coffee-light">COFFEE</span>
                     </span>
-                    <p class="text-slate-400 leading-relaxed max-w-sm mb-4">
+                    <p class="text-stone-400 leading-relaxed max-w-sm mb-4">
                         Brand minuman kekinian dengan dedikasi menyajikan aneka olahan frappe, artisan coffee, dan fruit mocktail segar berkualitas tinggi untuk seluruh kalangan.
                     </p>
-                    <div class="space-y-1 text-slate-300">
-                        <p>Instagram: <a href="https://instagram.com/bright_c0ffee" target="_blank" class="text-amber-400 hover:underline">@bright_c0ffee</a></p>
-                        <p>WhatsApp: <a href="https://wa.me/6285705952173" target="_blank" class="text-amber-400 hover:underline">085705952173</a></p>
+                    <div class="space-y-1 text-stone-300">
+                        <p>Instagram: <a href="https://instagram.com/bright_c0ffee" target="_blank" class="text-coffee-light hover:underline">@bright_c0ffee</a></p>
+                        <p>WhatsApp: <a href="https://wa.me/6285705952173" target="_blank" class="text-coffee-light hover:underline">085705952173</a></p>
                         <p>Lokasi: Jln. Mustafa Dg. Bunga / Romang Polong</p>
                     </div>
                 </div>
@@ -796,12 +800,12 @@
                 <div>
                     <h4 class="font-heading font-bold text-white text-xs uppercase tracking-wider mb-3">Navigasi Halaman</h4>
                     <ul class="space-y-2">
-                        <li><a href="#beranda" class="hover:text-amber-400">Beranda</a></li>
-                        <li><a href="#keunggulan" class="hover:text-amber-400">Keunggulan Kami</a></li>
-                        <li><a href="#menu" class="hover:text-amber-400">Katalog Menu</a></li>
-                        <li><a href="#promo" class="hover:text-amber-400">Paket Promo</a></li>
-                        <li><a href="#testimoni" class="hover:text-amber-400">Testimoni Pelanggan</a></li>
-                        <li><a href="#kontak" class="hover:text-amber-400">Lokasi & WhatsApp</a></li>
+                        <li><a href="#beranda" class="hover:text-coffee-light">Beranda</a></li>
+                        <li><a href="#keunggulan" class="hover:text-coffee-light">Keunggulan Kami</a></li>
+                        <li><a href="#menu" class="hover:text-coffee-light">Katalog Menu</a></li>
+                        <li><a href="#promo" class="hover:text-coffee-light">Paket Promo</a></li>
+                        <li><a href="#testimoni" class="hover:text-coffee-light">Testimoni Pelanggan</a></li>
+                        <li><a href="#kontak" class="hover:text-coffee-light">Lokasi & WhatsApp</a></li>
                     </ul>
                 </div>
 
@@ -813,7 +817,7 @@
                         <p>Mahasiswi Teknik Komputer (Kelas C - Angkatan 2025)</p>
                         <p>Praktikum Pemrograman Web - Tailwind CSS</p>
                         <div class="pt-2">
-                            <a href="https://naylaazzahrah358-beep.github.io" target="_blank" class="text-amber-400 hover:underline font-semibold">
+                            <a href="https://naylaazzahrah358-beep.github.io" target="_blank" class="text-coffee-light hover:underline font-semibold">
                                 &rarr; Buka Portofolio Utama
                             </a>
                         </div>
@@ -821,47 +825,47 @@
                 </div>
             </div>
 
-            <div class="pt-6 border-t border-slate-800 text-slate-500 flex flex-col sm:flex-row items-center justify-between gap-2">
+            <div class="pt-6 border-t border-stone-800 text-stone-500 flex flex-col sm:flex-row items-center justify-between gap-2">
                 <p>&copy; 2026 D'BRIGHT COFFEE &bull; Nayla Azzahra R</p>
                 <p>Kelas C Angkatan 2025 &bull; FT-UNM</p>
             </div>
         </div>
     </footer>
 
-    <!-- INTERACTIVE ORDER MODAL (Kotak, tanpa melengkung) -->
-    <div id="orderModal" class="fixed inset-0 z-50 bg-slate-900/70 hidden items-center justify-center p-4">
-        <div class="bg-white max-w-md w-full p-6 border-2 border-slate-300 shadow-2xl relative">
-            <button onclick="closeOrderModal()" class="absolute top-4 right-4 text-slate-600 hover:text-slate-900 font-bold text-sm px-2 py-1 border border-slate-300 hover:bg-slate-100">
+    <!-- INTERACTIVE ORDER MODAL (Kotak, Tema Cream Putih) -->
+    <div id="orderModal" class="fixed inset-0 z-50 bg-stone-900/70 hidden items-center justify-center p-4">
+        <div class="bg-white max-w-md w-full p-6 border-2 border-cream-400 shadow-2xl relative">
+            <button onclick="closeOrderModal()" class="absolute top-4 right-4 text-stone-600 hover:text-stone-900 font-bold text-sm px-2 py-1 border border-cream-300 hover:bg-cream-100">
                 TUTUP [X]
             </button>
 
             <div class="mb-4">
-                <h3 class="font-heading font-extrabold text-lg text-slate-900">Form Pemesanan Menu</h3>
-                <p class="text-xs text-slate-500">Konfirmasi varian dan lanjutkan ke WhatsApp</p>
+                <h3 class="font-heading font-extrabold text-lg text-stone-900">Form Pemesanan Menu</h3>
+                <p class="text-xs text-stone-500">Konfirmasi varian dan lanjutkan ke WhatsApp</p>
             </div>
 
             <form onsubmit="handleModalOrder(event)" class="space-y-3 text-xs">
                 <div>
-                    <label class="block font-semibold text-slate-700 mb-1">Menu yang Dipilih:</label>
-                    <input type="text" id="modalDrinkName" readonly class="w-full px-3 py-2 bg-stone-100 border border-slate-300 font-bold text-slate-800 outline-none">
+                    <label class="block font-semibold text-stone-700 mb-1">Menu yang Dipilih:</label>
+                    <input type="text" id="modalDrinkName" readonly class="w-full px-3 py-2 bg-cream-50 border border-cream-300 font-bold text-stone-800 outline-none">
                 </div>
 
                 <div>
-                    <label class="block font-semibold text-slate-700 mb-1">Nama Pemesan:</label>
-                    <input type="text" id="modalCustName" required placeholder="Masukkan nama Anda" class="w-full px-3 py-2 border border-slate-300 outline-none focus:border-amber-600">
+                    <label class="block font-semibold text-stone-700 mb-1">Nama Pemesan:</label>
+                    <input type="text" id="modalCustName" required placeholder="Masukkan nama Anda" class="w-full px-3 py-2 border border-cream-300 outline-none focus:border-coffee">
                 </div>
 
                 <div class="grid grid-cols-2 gap-2">
                     <div>
-                        <label class="block font-semibold text-slate-700 mb-1">Ukuran Cup:</label>
-                        <select id="modalCupSize" class="w-full px-2 py-2 border border-slate-300 outline-none">
+                        <label class="block font-semibold text-stone-700 mb-1">Ukuran Cup:</label>
+                        <select id="modalCupSize" class="w-full px-2 py-2 border border-cream-300 outline-none">
                             <option value="Regular (Medium)">Regular (Medium)</option>
                             <option value="Large (Jumbo) (+Rp 3.000)">Large (+Rp 3.000)</option>
                         </select>
                     </div>
                     <div>
-                        <label class="block font-semibold text-slate-700 mb-1">Kadar Gula:</label>
-                        <select id="modalSugarLevel" class="w-full px-2 py-2 border border-slate-300 outline-none">
+                        <label class="block font-semibold text-stone-700 mb-1">Kadar Gula:</label>
+                        <select id="modalSugarLevel" class="w-full px-2 py-2 border border-cream-300 outline-none">
                             <option value="Normal Sugar (100%)">Normal (100%)</option>
                             <option value="Less Sugar (70%)">Less (70%)</option>
                             <option value="Half Sugar (50%)">Half (50%)</option>
@@ -871,8 +875,8 @@
                 </div>
 
                 <div>
-                    <label class="block font-semibold text-slate-700 mb-1">Topping Tambahan:</label>
-                    <select id="modalTopping" class="w-full px-2 py-2 border border-slate-300 outline-none">
+                    <label class="block font-semibold text-stone-700 mb-1">Topping Tambahan:</label>
+                    <select id="modalTopping" class="w-full px-2 py-2 border border-cream-300 outline-none">
                         <option value="Tanpa Topping Tambahan">Tanpa Topping Tambahan</option>
                         <option value="Ekstra Whipped Cream (+Rp 3.000)">Ekstra Whipped Cream (+Rp 3.000)</option>
                         <option value="Boba Brown Sugar (+Rp 3.000)">Boba Brown Sugar (+Rp 3.000)</option>
@@ -882,12 +886,12 @@
                 </div>
 
                 <div>
-                    <label class="block font-semibold text-slate-700 mb-1">Catatan Khusus:</label>
-                    <textarea id="modalNotes" rows="2" placeholder="Contoh: Es sedikit / Es dipisah" class="w-full px-3 py-2 border border-slate-300 outline-none"></textarea>
+                    <label class="block font-semibold text-stone-700 mb-1">Catatan Khusus:</label>
+                    <textarea id="modalNotes" rows="2" placeholder="Contoh: Es sedikit / Es dipisah" class="w-full px-3 py-2 border border-cream-300 outline-none"></textarea>
                 </div>
 
                 <div class="pt-2">
-                    <button type="submit" class="w-full py-3 bg-amber-600 hover:bg-amber-700 text-white font-bold border border-amber-700 transition">
+                    <button type="submit" class="w-full py-3 bg-coffee hover:bg-coffee-dark text-white font-bold border border-coffee-dark transition">
                         Lanjutkan Order via WhatsApp
                     </button>
                 </div>
@@ -915,11 +919,11 @@
             const buttons = document.querySelectorAll('.filter-btn');
             buttons.forEach(btn => {
                 if(btn.getAttribute('data-category') === category) {
-                    btn.classList.add('bg-amber-600', 'text-white', 'border-amber-700');
-                    btn.classList.remove('bg-white', 'text-slate-800', 'border-slate-300');
+                    btn.classList.add('bg-coffee', 'text-white', 'border-coffee-dark');
+                    btn.classList.remove('bg-white', 'text-stone-800', 'border-cream-300');
                 } else {
-                    btn.classList.remove('bg-amber-600', 'text-white', 'border-amber-700');
-                    btn.classList.add('bg-white', 'text-slate-800', 'border-slate-300');
+                    btn.classList.remove('bg-coffee', 'text-white', 'border-coffee-dark');
+                    btn.classList.add('bg-white', 'text-stone-800', 'border-cream-300');
                 }
             });
 
