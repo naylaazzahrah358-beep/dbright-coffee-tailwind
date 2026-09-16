@@ -52,11 +52,18 @@
 <body class="font-sans text-stone-800 bg-cream-50 antialiased selection:bg-coffee selection:text-white">
 
     <!-- TOP PROMO BAR -->
-    <aside class="bg-cream-200 text-stone-800 text-xs md:text-sm py-2 px-4 text-center font-medium border-b border-cream-300">
-        <div class="max-w-7xl mx-auto flex items-center justify-center gap-2 flex-wrap">
-            <span class="px-2 py-0.5 text-xs font-bold bg-white text-coffee-dark border border-cream-300 uppercase tracking-wider">Promo</span>
-            <span>Menu D'Bright Coffee: Minuman & Snack Nikmat Mulai Rp 8.000,-</span>
-            <a href="#menu" class="underline font-bold text-coffee-dark hover:text-coffee ml-1">Lihat Menu &rarr;</a>
+    <aside class="bg-cream-200 text-stone-800 text-xs md:text-sm py-2 px-4 font-medium border-b border-cream-300">
+        <div class="max-w-7xl mx-auto flex items-center justify-between gap-3 flex-wrap">
+            <div class="flex items-center gap-2 flex-wrap">
+                <span class="px-2 py-0.5 text-xs font-bold bg-white text-coffee-dark border border-cream-300 uppercase tracking-wider">Promo</span>
+                <span>Menu D'Bright Coffee: Minuman & Snack Nikmat Mulai Rp 8.000,-</span>
+                <a href="#menu" class="underline font-bold text-coffee-dark hover:text-coffee ml-1">Lihat Menu &rarr;</a>
+            </div>
+            <!-- Live Operational Status Badge (jQuery) -->
+            <div id="outletStatusBadge" class="inline-flex items-center gap-2 px-2.5 py-1 bg-white border border-cream-300 text-[11px] font-bold">
+                <span class="w-2 h-2 bg-emerald-600 inline-block"></span>
+                <span id="outletStatusText" class="text-stone-700">MEMERIKSA JAM BUKA...</span>
+            </div>
         </div>
     </aside>
 
@@ -76,12 +83,13 @@
                 </a>
 
                 <!-- Desktop Menu Navigation -->
-                <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-stone-700">
+                <nav class="hidden md:flex items-center gap-7 text-sm font-semibold text-stone-700">
                     <a href="#beranda" class="hover:text-coffee transition-colors">Beranda</a>
                     <a href="#keunggulan" class="hover:text-coffee transition-colors">Keunggulan</a>
                     <a href="#menu" class="hover:text-coffee transition-colors">Menu (24)</a>
                     <a href="#promo" class="hover:text-coffee transition-colors">Paket Hemat</a>
                     <a href="#testimoni" class="hover:text-coffee transition-colors">Testimoni</a>
+                    <a href="#faq" class="hover:text-coffee transition-colors">FAQ</a>
                     <a href="#kontak" class="hover:text-coffee transition-colors">Lokasi & Kontak</a>
                 </nav>
 
@@ -107,6 +115,7 @@
                 <a href="#menu" class="hover:text-coffee py-1">Menu (24)</a>
                 <a href="#promo" class="hover:text-coffee py-1">Paket Hemat</a>
                 <a href="#testimoni" class="hover:text-coffee py-1">Testimoni</a>
+                <a href="#faq" class="hover:text-coffee py-1">FAQ</a>
                 <a href="#kontak" class="hover:text-coffee py-1">Lokasi & Kontak</a>
                 <div class="pt-3 border-t border-cream-200">
                     <button class="btn-order-item w-full bg-coffee text-white font-bold py-3 text-center" data-name="Signature D'Bright" data-price="15000" data-category="coffee">
@@ -116,6 +125,12 @@
             </div>
         </div>
     </header>
+
+    <!-- FLOATING TOAST NOTIFICATION (JQUERY INTERACTIVE) -->
+    <div id="toastNotification" class="fixed top-24 right-4 z-50 bg-stone-950 text-white border-2 border-coffee-light px-4 py-3 shadow-2xl text-xs font-semibold hidden items-center gap-3">
+        <span class="w-2.5 h-2.5 bg-coffee-light shrink-0"></span>
+        <span id="toastMessage">Memuat pesanan...</span>
+    </div>
 
     <!-- HERO SECTION -->
     <section id="beranda" class="pt-12 pb-16 lg:py-20 bg-cream-100 border-b border-cream-200">
@@ -257,18 +272,32 @@
     <!-- MENU KATALOG INTERAKTIF (24 MENU D'BRIGHT COFFEE DENGAN JQUERY) -->
     <section id="menu" class="py-16 bg-cream-100/60 border-b border-cream-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-2xl mx-auto mb-10">
+            <div class="text-center max-w-2xl mx-auto mb-8">
                 <span class="text-coffee font-bold text-xs uppercase tracking-widest border border-cream-300 px-3 py-1 bg-white">Daftar Menu</span>
                 <h2 class="font-heading font-extrabold text-2xl sm:text-3xl text-stone-900 mt-4 mb-3">
                     Katalog Lengkap D'Bright Coffee
                 </h2>
-                <p class="text-stone-600 text-sm">
-                    Klik tab kategori di bawah untuk memfilter menu secara instan menggunakan jQuery.
+                <p class="text-stone-600 text-sm mb-6">
+                    Gunakan filter kategori atau kotak pencarian instan di bawah untuk menemukan menu favorit Anda.
                 </p>
 
+                <!-- Search Input with jQuery Real-time Filter -->
+                <div class="max-w-md mx-auto mb-6">
+                    <div class="relative flex items-center">
+                        <input type="text" id="menuSearch" placeholder="Cari nama menu (cth: Matcha, Kopi Susu, Mentai, Roti...)" class="w-full px-4 py-2.5 bg-white border-2 border-cream-300 text-xs sm:text-sm font-medium text-stone-800 placeholder-stone-400 focus:border-coffee outline-none transition">
+                        <button id="clearSearchBtn" type="button" class="hidden absolute right-2 px-2.5 py-1 text-[11px] font-bold bg-cream-100 hover:bg-cream-200 text-stone-700 border border-cream-300 transition">
+                            HAPUS [X]
+                        </button>
+                    </div>
+                    <div class="flex items-center justify-between text-[11px] text-stone-500 mt-2 px-1">
+                        <span id="menuCounterText">Menampilkan <strong id="menuCountNumber" class="text-coffee font-bold">24</strong> dari 24 menu</span>
+                        <span class="text-stone-400">Pencarian Instan jQuery</span>
+                    </div>
+                </div>
+
                 <!-- Category Filters (jQuery Filter Buttons) -->
-                <div class="flex items-center justify-center flex-wrap gap-2 mt-6">
-                    <button class="filter-btn active-filter px-4 py-2 text-xs font-bold bg-coffee text-white border border-coffee-dark transition" data-category="all">
+                <div class="flex items-center justify-center flex-wrap gap-2">
+                    <button class="filter-btn active-filter px-4 py-2 text-xs font-bold bg-coffee text-white border border-coffee-dark transition shadow-sm" data-category="all">
                         Semua Menu (24)
                     </button>
                     <button class="filter-btn px-4 py-2 text-xs font-bold bg-white text-stone-800 border border-cream-300 hover:border-coffee transition" data-category="coffee">
@@ -286,9 +315,18 @@
             <!-- Product Grid: 24 Menu Items -->
             <div id="productGrid" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
 
+                <!-- Empty State jika pencarian tidak ditemukan (jQuery) -->
+                <div id="noMenuFound" class="hidden col-span-full py-12 text-center bg-white border-2 border-dashed border-cream-300 p-8">
+                    <p class="font-heading font-bold text-stone-800 text-base mb-1">Menu Tidak Ditemukan</p>
+                    <p class="text-stone-500 text-xs mb-4">Tidak ada menu yang sesuai dengan kata kunci yang Anda masukkan.</p>
+                    <button id="resetFilterBtn" type="button" class="px-5 py-2.5 text-xs font-bold bg-coffee text-white border border-coffee-dark hover:bg-coffee-dark transition">
+                        Lihat Semua 24 Menu
+                    </button>
+                </div>
+
                 <!-- ===== KATEGORI COFFEE (7 Menu) ===== -->
                 <!-- 1. Americano (Hot/ice) -->
-                <div class="menu-item bg-white border border-cream-300 hover:border-coffee transition flex flex-col justify-between" data-category="coffee">
+                <div class="menu-item bg-white border border-cream-300 hover:border-coffee hover:-translate-y-1 hover:shadow-md transition-all duration-200 flex flex-col justify-between" data-category="coffee">
                     <div class="p-6">
                         <div class="flex items-center justify-between mb-3 text-xs">
                             <span class="font-bold uppercase tracking-wider text-coffee bg-cream-100 px-2 py-0.5 border border-cream-300">Coffee</span>
@@ -309,7 +347,7 @@
                 </div>
 
                 <!-- 2. Kopi Susu Klasik -->
-                <div class="menu-item bg-white border border-cream-300 hover:border-coffee transition flex flex-col justify-between" data-category="coffee">
+                <div class="menu-item bg-white border border-cream-300 hover:border-coffee hover:-translate-y-1 hover:shadow-md transition-all duration-200 flex flex-col justify-between" data-category="coffee">
                     <div class="p-6">
                         <div class="flex items-center justify-between mb-3 text-xs">
                             <span class="font-bold uppercase tracking-wider text-coffee bg-cream-100 px-2 py-0.5 border border-cream-300">Coffee</span>
@@ -330,7 +368,7 @@
                 </div>
 
                 <!-- 3. Signature D'Bright -->
-                <div class="menu-item bg-white border border-cream-300 hover:border-coffee transition flex flex-col justify-between" data-category="coffee">
+                <div class="menu-item bg-white border border-cream-300 hover:border-coffee hover:-translate-y-1 hover:shadow-md transition-all duration-200 flex flex-col justify-between" data-category="coffee">
                     <div class="p-6">
                         <div class="flex items-center justify-between mb-3 text-xs">
                             <span class="font-bold uppercase tracking-wider text-white bg-coffee px-2 py-0.5 border border-coffee-dark">Best Seller</span>
@@ -351,7 +389,7 @@
                 </div>
 
                 <!-- 4. Kopi Pandan -->
-                <div class="menu-item bg-white border border-cream-300 hover:border-coffee transition flex flex-col justify-between" data-category="coffee">
+                <div class="menu-item bg-white border border-cream-300 hover:border-coffee hover:-translate-y-1 hover:shadow-md transition-all duration-200 flex flex-col justify-between" data-category="coffee">
                     <div class="p-6">
                         <div class="flex items-center justify-between mb-3 text-xs">
                             <span class="font-bold uppercase tracking-wider text-coffee bg-cream-100 px-2 py-0.5 border border-cream-300">Coffee</span>
@@ -372,7 +410,7 @@
                 </div>
 
                 <!-- 5. Caramel Coffee -->
-                <div class="menu-item bg-white border border-cream-300 hover:border-coffee transition flex flex-col justify-between" data-category="coffee">
+                <div class="menu-item bg-white border border-cream-300 hover:border-coffee hover:-translate-y-1 hover:shadow-md transition-all duration-200 flex flex-col justify-between" data-category="coffee">
                     <div class="p-6">
                         <div class="flex items-center justify-between mb-3 text-xs">
                             <span class="font-bold uppercase tracking-wider text-coffee bg-cream-100 px-2 py-0.5 border border-cream-300">Coffee</span>
@@ -393,7 +431,7 @@
                 </div>
 
                 <!-- 6. Butterscoth -->
-                <div class="menu-item bg-white border border-cream-300 hover:border-coffee transition flex flex-col justify-between" data-category="coffee">
+                <div class="menu-item bg-white border border-cream-300 hover:border-coffee hover:-translate-y-1 hover:shadow-md transition-all duration-200 flex flex-col justify-between" data-category="coffee">
                     <div class="p-6">
                         <div class="flex items-center justify-between mb-3 text-xs">
                             <span class="font-bold uppercase tracking-wider text-coffee bg-cream-100 px-2 py-0.5 border border-cream-300">Coffee</span>
@@ -414,7 +452,7 @@
                 </div>
 
                 <!-- 7. Coffee Latte -->
-                <div class="menu-item bg-white border border-cream-300 hover:border-coffee transition flex flex-col justify-between" data-category="coffee">
+                <div class="menu-item bg-white border border-cream-300 hover:border-coffee hover:-translate-y-1 hover:shadow-md transition-all duration-200 flex flex-col justify-between" data-category="coffee">
                     <div class="p-6">
                         <div class="flex items-center justify-between mb-3 text-xs">
                             <span class="font-bold uppercase tracking-wider text-coffee bg-cream-100 px-2 py-0.5 border border-cream-300">Coffee</span>
@@ -437,7 +475,7 @@
 
                 <!-- ===== KATEGORI NON COFFEE (9 Menu) ===== -->
                 <!-- 8. Matcha Latte -->
-                <div class="menu-item bg-white border border-cream-300 hover:border-coffee transition flex flex-col justify-between" data-category="non-coffee">
+                <div class="menu-item bg-white border border-cream-300 hover:border-coffee hover:-translate-y-1 hover:shadow-md transition-all duration-200 flex flex-col justify-between" data-category="non-coffee">
                     <div class="p-6">
                         <div class="flex items-center justify-between mb-3 text-xs">
                             <span class="font-bold uppercase tracking-wider text-coffee bg-cream-100 px-2 py-0.5 border border-cream-300">Non Coffe</span>
@@ -458,7 +496,7 @@
                 </div>
 
                 <!-- 9. Matcha Strawberry -->
-                <div class="menu-item bg-white border border-cream-300 hover:border-coffee transition flex flex-col justify-between" data-category="non-coffee">
+                <div class="menu-item bg-white border border-cream-300 hover:border-coffee hover:-translate-y-1 hover:shadow-md transition-all duration-200 flex flex-col justify-between" data-category="non-coffee">
                     <div class="p-6">
                         <div class="flex items-center justify-between mb-3 text-xs">
                             <span class="font-bold uppercase tracking-wider text-coffee bg-cream-100 px-2 py-0.5 border border-cream-300">Non Coffe</span>
@@ -479,7 +517,7 @@
                 </div>
 
                 <!-- 10. Choco Matcha -->
-                <div class="menu-item bg-white border border-cream-300 hover:border-coffee transition flex flex-col justify-between" data-category="non-coffee">
+                <div class="menu-item bg-white border border-cream-300 hover:border-coffee hover:-translate-y-1 hover:shadow-md transition-all duration-200 flex flex-col justify-between" data-category="non-coffee">
                     <div class="p-6">
                         <div class="flex items-center justify-between mb-3 text-xs">
                             <span class="font-bold uppercase tracking-wider text-coffee bg-cream-100 px-2 py-0.5 border border-cream-300">Non Coffe</span>
@@ -500,7 +538,7 @@
                 </div>
 
                 <!-- 11. Matcha Oreo -->
-                <div class="menu-item bg-white border border-cream-300 hover:border-coffee transition flex flex-col justify-between" data-category="non-coffee">
+                <div class="menu-item bg-white border border-cream-300 hover:border-coffee hover:-translate-y-1 hover:shadow-md transition-all duration-200 flex flex-col justify-between" data-category="non-coffee">
                     <div class="p-6">
                         <div class="flex items-center justify-between mb-3 text-xs">
                             <span class="font-bold uppercase tracking-wider text-coffee bg-cream-100 px-2 py-0.5 border border-cream-300">Non Coffe</span>
@@ -521,7 +559,7 @@
                 </div>
 
                 <!-- 12. Chocolate -->
-                <div class="menu-item bg-white border border-cream-300 hover:border-coffee transition flex flex-col justify-between" data-category="non-coffee">
+                <div class="menu-item bg-white border border-cream-300 hover:border-coffee hover:-translate-y-1 hover:shadow-md transition-all duration-200 flex flex-col justify-between" data-category="non-coffee">
                     <div class="p-6">
                         <div class="flex items-center justify-between mb-3 text-xs">
                             <span class="font-bold uppercase tracking-wider text-coffee bg-cream-100 px-2 py-0.5 border border-cream-300">Non Coffe</span>
@@ -542,7 +580,7 @@
                 </div>
 
                 <!-- 13. Red Velvet -->
-                <div class="menu-item bg-white border border-cream-300 hover:border-coffee transition flex flex-col justify-between" data-category="non-coffee">
+                <div class="menu-item bg-white border border-cream-300 hover:border-coffee hover:-translate-y-1 hover:shadow-md transition-all duration-200 flex flex-col justify-between" data-category="non-coffee">
                     <div class="p-6">
                         <div class="flex items-center justify-between mb-3 text-xs">
                             <span class="font-bold uppercase tracking-wider text-coffee bg-cream-100 px-2 py-0.5 border border-cream-300">Non Coffe</span>
@@ -563,7 +601,7 @@
                 </div>
 
                 <!-- 14. Thai Tea -->
-                <div class="menu-item bg-white border border-cream-300 hover:border-coffee transition flex flex-col justify-between" data-category="non-coffee">
+                <div class="menu-item bg-white border border-cream-300 hover:border-coffee hover:-translate-y-1 hover:shadow-md transition-all duration-200 flex flex-col justify-between" data-category="non-coffee">
                     <div class="p-6">
                         <div class="flex items-center justify-between mb-3 text-xs">
                             <span class="font-bold uppercase tracking-wider text-coffee bg-cream-100 px-2 py-0.5 border border-cream-300">Non Coffe</span>
@@ -584,7 +622,7 @@
                 </div>
 
                 <!-- 15. Taro latte -->
-                <div class="menu-item bg-white border border-cream-300 hover:border-coffee transition flex flex-col justify-between" data-category="non-coffee">
+                <div class="menu-item bg-white border border-cream-300 hover:border-coffee hover:-translate-y-1 hover:shadow-md transition-all duration-200 flex flex-col justify-between" data-category="non-coffee">
                     <div class="p-6">
                         <div class="flex items-center justify-between mb-3 text-xs">
                             <span class="font-bold uppercase tracking-wider text-coffee bg-cream-100 px-2 py-0.5 border border-cream-300">Non Coffe</span>
@@ -605,7 +643,7 @@
                 </div>
 
                 <!-- 16. Lemon/Lyche Tea -->
-                <div class="menu-item bg-white border border-cream-300 hover:border-coffee transition flex flex-col justify-between" data-category="non-coffee">
+                <div class="menu-item bg-white border border-cream-300 hover:border-coffee hover:-translate-y-1 hover:shadow-md transition-all duration-200 flex flex-col justify-between" data-category="non-coffee">
                     <div class="p-6">
                         <div class="flex items-center justify-between mb-3 text-xs">
                             <span class="font-bold uppercase tracking-wider text-coffee bg-cream-100 px-2 py-0.5 border border-cream-300">Non Coffe</span>
@@ -628,7 +666,7 @@
 
                 <!-- ===== KATEGORI MENU SNACK (8 Menu) ===== -->
                 <!-- 17. Kentang Goreng -->
-                <div class="menu-item bg-white border border-cream-300 hover:border-coffee transition flex flex-col justify-between" data-category="snack">
+                <div class="menu-item bg-white border border-cream-300 hover:border-coffee hover:-translate-y-1 hover:shadow-md transition-all duration-200 flex flex-col justify-between" data-category="snack">
                     <div class="p-6">
                         <div class="flex items-center justify-between mb-3 text-xs">
                             <span class="font-bold uppercase tracking-wider text-coffee bg-cream-100 px-2 py-0.5 border border-cream-300">Menu Snack</span>
@@ -649,7 +687,7 @@
                 </div>
 
                 <!-- 18. Ubi Goreng -->
-                <div class="menu-item bg-white border border-cream-300 hover:border-coffee transition flex flex-col justify-between" data-category="snack">
+                <div class="menu-item bg-white border border-cream-300 hover:border-coffee hover:-translate-y-1 hover:shadow-md transition-all duration-200 flex flex-col justify-between" data-category="snack">
                     <div class="p-6">
                         <div class="flex items-center justify-between mb-3 text-xs">
                             <span class="font-bold uppercase tracking-wider text-coffee bg-cream-100 px-2 py-0.5 border border-cream-300">Menu Snack</span>
@@ -670,7 +708,7 @@
                 </div>
 
                 <!-- 19. Roti Bakar -->
-                <div class="menu-item bg-white border border-cream-300 hover:border-coffee transition flex flex-col justify-between" data-category="snack">
+                <div class="menu-item bg-white border border-cream-300 hover:border-coffee hover:-translate-y-1 hover:shadow-md transition-all duration-200 flex flex-col justify-between" data-category="snack">
                     <div class="p-6">
                         <div class="flex items-center justify-between mb-3 text-xs">
                             <span class="font-bold uppercase tracking-wider text-coffee bg-cream-100 px-2 py-0.5 border border-cream-300">Menu Snack</span>
@@ -691,7 +729,7 @@
                 </div>
 
                 <!-- 20. Banana Stick (choco& Tiramisu) -->
-                <div class="menu-item bg-white border border-cream-300 hover:border-coffee transition flex flex-col justify-between" data-category="snack">
+                <div class="menu-item bg-white border border-cream-300 hover:border-coffee hover:-translate-y-1 hover:shadow-md transition-all duration-200 flex flex-col justify-between" data-category="snack">
                     <div class="p-6">
                         <div class="flex items-center justify-between mb-3 text-xs">
                             <span class="font-bold uppercase tracking-wider text-coffee bg-cream-100 px-2 py-0.5 border border-cream-300">Menu Snack</span>
@@ -712,7 +750,7 @@
                 </div>
 
                 <!-- 21. Platter (kentang,sosis,nugget) -->
-                <div class="menu-item bg-white border border-cream-300 hover:border-coffee transition flex flex-col justify-between" data-category="snack">
+                <div class="menu-item bg-white border border-cream-300 hover:border-coffee hover:-translate-y-1 hover:shadow-md transition-all duration-200 flex flex-col justify-between" data-category="snack">
                     <div class="p-6">
                         <div class="flex items-center justify-between mb-3 text-xs">
                             <span class="font-bold uppercase tracking-wider text-white bg-coffee px-2 py-0.5 border border-coffee-dark">Paling Komplit</span>
@@ -733,7 +771,7 @@
                 </div>
 
                 <!-- 22. Dimsum Mentai -->
-                <div class="menu-item bg-white border border-cream-300 hover:border-coffee transition flex flex-col justify-between" data-category="snack">
+                <div class="menu-item bg-white border border-cream-300 hover:border-coffee hover:-translate-y-1 hover:shadow-md transition-all duration-200 flex flex-col justify-between" data-category="snack">
                     <div class="p-6">
                         <div class="flex items-center justify-between mb-3 text-xs">
                             <span class="font-bold uppercase tracking-wider text-coffee bg-cream-100 px-2 py-0.5 border border-cream-300">Menu Snack</span>
@@ -754,7 +792,7 @@
                 </div>
 
                 <!-- 23. Indomie Biasa -->
-                <div class="menu-item bg-white border border-cream-300 hover:border-coffee transition flex flex-col justify-between" data-category="snack">
+                <div class="menu-item bg-white border border-cream-300 hover:border-coffee hover:-translate-y-1 hover:shadow-md transition-all duration-200 flex flex-col justify-between" data-category="snack">
                     <div class="p-6">
                         <div class="flex items-center justify-between mb-3 text-xs">
                             <span class="font-bold uppercase tracking-wider text-coffee bg-cream-100 px-2 py-0.5 border border-cream-300">Menu Snack</span>
@@ -775,7 +813,7 @@
                 </div>
 
                 <!-- 24. Indomie Komplit -->
-                <div class="menu-item bg-white border border-cream-300 hover:border-coffee transition flex flex-col justify-between" data-category="snack">
+                <div class="menu-item bg-white border border-cream-300 hover:border-coffee hover:-translate-y-1 hover:shadow-md transition-all duration-200 flex flex-col justify-between" data-category="snack">
                     <div class="p-6">
                         <div class="flex items-center justify-between mb-3 text-xs">
                             <span class="font-bold uppercase tracking-wider text-coffee bg-cream-100 px-2 py-0.5 border border-cream-300">Menu Snack</span>
@@ -802,14 +840,22 @@
     <!-- PROMO & PAKET HEMAT SECTION -->
     <section id="promo" class="py-16 bg-white border-b border-cream-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-2xl mx-auto mb-12">
+            <div class="text-center max-w-2xl mx-auto mb-10">
                 <span class="text-coffee font-bold text-xs uppercase tracking-widest border border-cream-300 px-3 py-1 bg-cream-50">Paket Hemat</span>
                 <h2 class="font-heading font-extrabold text-2xl sm:text-3xl text-stone-900 mt-4 mb-3">
                     Paket Combo Hemat D'Bright
                 </h2>
-                <p class="text-stone-600 text-sm">
+                <p class="text-stone-600 text-sm mb-5">
                     Pilihan paket hemat minuman dan snack untuk kumpul seru bareng teman.
                 </p>
+
+                <!-- Live Daily Countdown Timer (jQuery) -->
+                <div class="inline-flex items-center gap-3 px-4 py-2 bg-cream-100 border border-cream-300 text-xs font-semibold text-stone-800">
+                    <span class="text-coffee font-bold uppercase tracking-wider">Promo Hari Ini Berakhir:</span>
+                    <div id="promoTimer" class="font-mono font-bold text-coffee text-sm tracking-widest bg-white px-2 py-0.5 border border-cream-300">
+                        <span id="timerHours">08</span> : <span id="timerMins">45</span> : <span id="timerSecs">20</span>
+                    </div>
+                </div>
             </div>
 
             <div class="grid md:grid-cols-3 gap-6">
@@ -978,6 +1024,67 @@
         </div>
     </section>
 
+    <!-- FAQ ACCORDION SECTION (JQUERY INTERACTIVE SLIDETOGGLE) -->
+    <section id="faq" class="py-16 bg-white border-b border-cream-200">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-10">
+                <span class="text-coffee font-bold text-xs uppercase tracking-widest border border-cream-300 px-3 py-1 bg-cream-50">Tanya Jawab</span>
+                <h2 class="font-heading font-extrabold text-2xl sm:text-3xl text-stone-900 mt-4 mb-3">
+                    Pertanyaan yang Sering Diajukan (FAQ)
+                </h2>
+                <p class="text-stone-600 text-sm">
+                    Klik pertanyaan di bawah untuk melihat rincian informasi seputar pemesanan dan layanan D'Bright Coffee.
+                </p>
+            </div>
+
+            <div class="space-y-3" id="faqAccordion">
+                <!-- FAQ Item 1 -->
+                <div class="faq-item border border-cream-300 bg-cream-50">
+                    <button type="button" class="faq-toggle w-full px-5 py-4 text-left font-heading font-bold text-stone-900 flex items-center justify-between text-sm sm:text-base hover:text-coffee transition">
+                        <span>Apakah minuman kopi & non-kopi bisa diatur kadar gulanya (less sugar / no sugar)?</span>
+                        <span class="faq-icon text-base font-bold text-coffee ml-3 w-6 h-6 border border-cream-300 flex items-center justify-center bg-white shrink-0 select-none">+</span>
+                    </button>
+                    <div class="faq-content hidden px-5 pb-4 pt-1 text-xs sm:text-sm text-stone-600 border-t border-cream-200 leading-relaxed bg-white">
+                        Tentu bisa! Anda bebas memilih varian <strong>Normal Sugar (100%)</strong>, <strong>Less Sugar (70%)</strong>, atau <strong>No Sugar (0%)</strong>, serta tingkat es batu pada formulir pemesanan web kami atau langsung lewat pesan WhatsApp.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="faq-item border border-cream-300 bg-cream-50">
+                    <button type="button" class="faq-toggle w-full px-5 py-4 text-left font-heading font-bold text-stone-900 flex items-center justify-between text-sm sm:text-base hover:text-coffee transition">
+                        <span>Berapa jam operasional dan hari buka D'Bright Coffee?</span>
+                        <span class="faq-icon text-base font-bold text-coffee ml-3 w-6 h-6 border border-cream-300 flex items-center justify-center bg-white shrink-0 select-none">+</span>
+                    </button>
+                    <div class="faq-content hidden px-5 pb-4 pt-1 text-xs sm:text-sm text-stone-600 border-t border-cream-200 leading-relaxed bg-white">
+                        D'Bright Coffee buka <strong>setiap hari (Senin sampai Minggu)</strong> mulai pukul <strong>09.00 hingga 22.00 WITA</strong>. Anda dapat berkunjung langsung ke outlet kami di Jl. Mustafa Dg. Bunga No.33 Romang Polong, Gowa - Samata, ataupun order pesan antar.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="faq-item border border-cream-300 bg-cream-50">
+                    <button type="button" class="faq-toggle w-full px-5 py-4 text-left font-heading font-bold text-stone-900 flex items-center justify-between text-sm sm:text-base hover:text-coffee transition">
+                        <span>Apakah menerima pesanan partai banyak untuk kegiatan kampus / rapat?</span>
+                        <span class="faq-icon text-base font-bold text-coffee ml-3 w-6 h-6 border border-cream-300 flex items-center justify-center bg-white shrink-0 select-none">+</span>
+                    </button>
+                    <div class="faq-content hidden px-5 pb-4 pt-1 text-xs sm:text-sm text-stone-600 border-t border-cream-200 leading-relaxed bg-white">
+                        Sangat bisa! Kami melayani pesanan partai besar (katering minuman kopi/non-kopi & snack) untuk acara seminar, rapat kampus, gathering organisasi, atau perayaan. Silakan hubungi nomor WhatsApp kami untuk koordinasi dan paket harga terbaik.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="faq-item border border-cream-300 bg-cream-50">
+                    <button type="button" class="faq-toggle w-full px-5 py-4 text-left font-heading font-bold text-stone-900 flex items-center justify-between text-sm sm:text-base hover:text-coffee transition">
+                        <span>Metode pembayaran apa saja yang diterima di D'Bright Coffee?</span>
+                        <span class="faq-icon text-base font-bold text-coffee ml-3 w-6 h-6 border border-cream-300 flex items-center justify-center bg-white shrink-0 select-none">+</span>
+                    </button>
+                    <div class="faq-content hidden px-5 pb-4 pt-1 text-xs sm:text-sm text-stone-600 border-t border-cream-200 leading-relaxed bg-white">
+                        Kami menerima pembayaran tunai (cash), QRIS (mendukung GoPay, OVO, Dana, ShopeePay, LinkAja, serta seluruh aplikasi mobile banking), dan transfer bank langsung.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- LOKASI & KONTAK OUTLET -->
     <section id="kontak" class="py-16 bg-cream-100/70">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -994,29 +1101,39 @@
                         </p>
 
                         <div class="space-y-4 text-xs sm:text-sm text-stone-800">
-                            <!-- Lokasi Sesuai Menu Resmi -->
-                            <div class="p-3 bg-cream-50 border border-cream-200">
-                                <span class="font-bold block text-stone-900 mb-1">Alamat Outlet Resmi:</span>
-                                <span class="text-stone-700 font-medium">Jl. Mustafa Dg. Bunga No.33 Romang Polong, Gowa - Samata</span>
+                            <!-- Lokasi Outlet -->
+                            <div class="p-3.5 bg-cream-50 border border-cream-200 flex items-center justify-between gap-3">
+                                <div>
+                                    <span class="font-bold block text-stone-900 mb-0.5">Alamat Outlet:</span>
+                                    <span id="outletAddressText" class="text-stone-700 font-medium">Jl. Mustafa Dg. Bunga No.33 Romang Polong, Gowa - Samata</span>
+                                </div>
+                                <button type="button" id="btnCopyAddress" class="px-2.5 py-1.5 bg-white hover:bg-cream-100 border border-cream-300 font-bold text-[11px] text-stone-700 shrink-0 transition select-none">
+                                    Salin Alamat
+                                </button>
                             </div>
 
                             <!-- Jam Operasional -->
-                            <div class="p-3 bg-cream-50 border border-cream-200">
-                                <span class="font-bold block text-stone-900 mb-1">Jam Operasional:</span>
+                            <div class="p-3.5 bg-cream-50 border border-cream-200">
+                                <span class="font-bold block text-stone-900 mb-0.5">Jam Operasional:</span>
                                 <span class="text-stone-600">Setiap Hari (Senin - Minggu) : 09.00 - 22.00 WITA</span>
                             </div>
 
                             <!-- WhatsApp -->
-                            <div class="p-3 bg-cream-50 border border-cream-200">
-                                <span class="font-bold block text-stone-900 mb-1">Kontak WhatsApp:</span>
-                                <a href="https://wa.me/6285705952173" target="_blank" rel="noopener noreferrer" class="text-coffee hover:underline font-bold">
-                                    085705952173 (+62 857-0595-2173)
-                                </a>
+                            <div class="p-3.5 bg-cream-50 border border-cream-200 flex items-center justify-between gap-3">
+                                <div>
+                                    <span class="font-bold block text-stone-900 mb-0.5">Kontak WhatsApp:</span>
+                                    <a href="https://wa.me/6285705952173" target="_blank" rel="noopener noreferrer" class="text-coffee hover:underline font-bold" id="outletPhoneText">
+                                        085705952173
+                                    </a>
+                                </div>
+                                <button type="button" id="btnCopyPhone" class="px-2.5 py-1.5 bg-white hover:bg-cream-100 border border-cream-300 font-bold text-[11px] text-stone-700 shrink-0 transition select-none">
+                                    Salin Nomor
+                                </button>
                             </div>
 
                             <!-- Instagram -->
-                            <div class="p-3 bg-cream-50 border border-cream-200">
-                                <span class="font-bold block text-stone-900 mb-1">Instagram Resmi:</span>
+                            <div class="p-3.5 bg-cream-50 border border-cream-200">
+                                <span class="font-bold block text-stone-900 mb-0.5">Instagram Resmi:</span>
                                 <a href="https://instagram.com/bright_c0ffee" target="_blank" rel="noopener noreferrer" class="text-coffee hover:underline font-bold">
                                     @bright_c0ffee
                                 </a>
@@ -1083,7 +1200,11 @@
                             <div class="grid grid-cols-2 gap-2">
                                 <div>
                                     <label class="block text-cream-100 font-semibold mb-1">Jumlah Porsi:</label>
-                                    <input type="number" id="custQty" value="1" min="1" max="50" class="w-full px-3 py-2 bg-white border border-cream-300 outline-none">
+                                    <div class="flex items-center">
+                                        <button type="button" id="fastQtyMinus" class="w-9 h-[38px] bg-stone-800 hover:bg-stone-700 text-cream-100 border border-cream-300 font-bold text-sm flex items-center justify-center select-none transition">-</button>
+                                        <input type="number" id="custQty" value="1" min="1" max="50" readonly class="w-full h-[38px] text-center bg-white border-y border-cream-300 font-bold text-stone-800 outline-none">
+                                        <button type="button" id="fastQtyPlus" class="w-9 h-[38px] bg-stone-800 hover:bg-stone-700 text-cream-100 border border-cream-300 font-bold text-sm flex items-center justify-center select-none transition">+</button>
+                                    </div>
                                 </div>
                                 <div>
                                     <label class="block text-cream-100 font-semibold mb-1">Varian / Gula:</label>
@@ -1152,6 +1273,7 @@
                         <li><a href="#menu" class="hover:text-coffee-light">Daftar Menu</a></li>
                         <li><a href="#promo" class="hover:text-coffee-light">Paket Promo</a></li>
                         <li><a href="#testimoni" class="hover:text-coffee-light">Testimoni Pelanggan</a></li>
+                        <li><a href="#faq" class="hover:text-coffee-light">Pertanyaan (FAQ)</a></li>
                         <li><a href="#kontak" class="hover:text-coffee-light">Lokasi & WhatsApp</a></li>
                     </ul>
                 </div>
@@ -1209,7 +1331,11 @@
                 <div class="grid grid-cols-2 gap-2">
                     <div>
                         <label class="block font-semibold text-stone-700 mb-1">Jumlah Porsi:</label>
-                        <input type="number" id="modalQty" value="1" min="1" max="50" class="w-full px-2 py-2 border border-cream-300 outline-none">
+                        <div class="flex items-center">
+                            <button type="button" id="modalQtyMinus" class="w-8 h-[34px] bg-cream-100 hover:bg-cream-200 border border-cream-300 font-bold text-stone-700 flex items-center justify-center select-none transition">-</button>
+                            <input type="number" id="modalQty" value="1" min="1" max="50" readonly class="w-full h-[34px] text-center border-y border-cream-300 font-bold text-stone-800 outline-none bg-white">
+                            <button type="button" id="modalQtyPlus" class="w-8 h-[34px] bg-cream-100 hover:bg-cream-200 border border-cream-300 font-bold text-stone-700 flex items-center justify-center select-none transition">+</button>
+                        </div>
                     </div>
                     <div>
                         <label class="block font-semibold text-stone-700 mb-1">Ukuran Cup (Minuman):</label>
@@ -1262,14 +1388,80 @@
         </div>
     </div>
 
-    <!-- IMPLEMENTASI JQUERY LENGKAP -->
+    <!-- FLOATING SCROLL TO TOP BUTTON (JQUERY INTERACTIVE) -->
+    <button id="btnScrollTop" title="Kembali ke Atas" class="hidden fixed bottom-6 right-6 z-40 bg-stone-900 hover:bg-coffee text-white px-3.5 py-2.5 border-2 border-cream-300 text-xs font-bold tracking-wider transition shadow-xl items-center gap-1.5 cursor-pointer">
+        <span>&uarr;</span> KE ATAS
+    </button>
+
+    <!-- IMPLEMENTASI JQUERY LENGKAP & INTERAKTIF -->
     <script>
         // WhatsApp Hotline Resmi D'Bright Coffee
         const WA_PHONE_NUMBER = "6285705952173";
 
         $(document).ready(function() {
             
-            // 1. jQuery: Mobile Menu Toggle dengan Animasi slideToggle
+            // ========================================================
+            // 1. HELPER: NOTIFIKASI TOAST JQUERY
+            // ========================================================
+            let toastTimer;
+            function showToast(message) {
+                $('#toastMessage').text(message);
+                $('#toastNotification').stop(true, true).css('display', 'flex').hide().fadeIn(200);
+                clearTimeout(toastTimer);
+                toastTimer = setTimeout(function() {
+                    $('#toastNotification').fadeOut(300);
+                }, 2500);
+            }
+
+            // ========================================================
+            // 2. STATUS OPERASIONAL OUTLET (09.00 - 22.00 WITA = UTC+8)
+            // ========================================================
+            function updateOutletStatus() {
+                const now = new Date();
+                const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+                const witaDate = new Date(utc + (3600000 * 8));
+                const hours = witaDate.getHours();
+
+                if (hours >= 9 && hours < 22) {
+                    $('#outletStatusBadge').html('<span class="w-2 h-2 bg-emerald-600 inline-block animate-pulse"></span><span class="text-emerald-800">BUKA SEKARANG (Tutup 22:00 WITA)</span>');
+                } else {
+                    $('#outletStatusBadge').html('<span class="w-2 h-2 bg-amber-600 inline-block"></span><span class="text-amber-800">TUTUP SEMENTARA (Buka 09:00 WITA)</span>');
+                }
+            }
+            updateOutletStatus();
+
+            // ========================================================
+            // 3. HITUNG MUNDUR PROMO HARIAN (COUNTDOWN TIMER JQUERY)
+            // ========================================================
+            function updatePromoCountdown() {
+                const now = new Date();
+                const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+                const wita = new Date(utc + (3600000 * 8));
+
+                // Target jam 22:00 WITA hari ini
+                let target = new Date(wita);
+                target.setHours(22, 0, 0, 0);
+
+                // Jika sudah lewat jam 22, target jam 22 besok
+                if (wita.getTime() >= target.getTime()) {
+                    target.setDate(target.getDate() + 1);
+                }
+
+                const diff = target.getTime() - wita.getTime();
+                const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+                const mins = Math.floor((diff / (1000 * 60)) % 60);
+                const secs = Math.floor((diff / 1000) % 60);
+
+                $('#timerHours').text(String(hours).padStart(2, '0'));
+                $('#timerMins').text(String(mins).padStart(2, '0'));
+                $('#timerSecs').text(String(secs).padStart(2, '0'));
+            }
+            updatePromoCountdown();
+            setInterval(updatePromoCountdown, 1000);
+
+            // ========================================================
+            // 4. MOBILE DRAWER NAVIGATION DENGAN SLIDETOGGLE
+            // ========================================================
             $('#mobileMenuBtn').on('click', function() {
                 $('#mobileMenu').stop(true, true).slideToggle(200);
             });
@@ -1278,7 +1470,9 @@
                 $('#mobileMenu').slideUp(200);
             });
 
-            // 2. jQuery: Smooth Scroll pada Navigasi Anchor
+            // ========================================================
+            // 5. SMOOTH SCROLL DENGAN OFFSET NAVBAR
+            // ========================================================
             $('a[href^="#"]').on('click', function(e) {
                 const targetId = $(this).attr('href');
                 if (targetId && targetId !== '#') {
@@ -1286,40 +1480,170 @@
                     if ($target.length) {
                         e.preventDefault();
                         $('html, body').animate({
-                            scrollTop: $target.offset().top - 75
-                        }, 350);
+                            scrollTop: $target.offset().top - 80
+                        }, 400);
                     }
                 }
             });
 
-            // 3. jQuery: Filter Kategori Menu dengan Animasi fadeIn & hide
-            $('.filter-btn').on('click', function() {
-                const selectedCategory = $(this).data('category');
-
-                // Update styling active button
-                $('.filter-btn')
-                    .removeClass('bg-coffee text-white border-coffee-dark active-filter')
-                    .addClass('bg-white text-stone-800 border-cream-300');
-                
-                $(this)
-                    .addClass('bg-coffee text-white border-coffee-dark active-filter')
-                    .removeClass('bg-white text-stone-800 border-cream-300');
-
-                // Filter menu cards
-                if (selectedCategory === 'all') {
-                    $('.menu-item').stop(true, true).fadeIn(250);
+            // ========================================================
+            // 6. SCROLL TO TOP BUTTON
+            // ========================================================
+            $(window).on('scroll', function() {
+                if ($(this).scrollTop() > 350) {
+                    $('#btnScrollTop').fadeIn(200).css('display', 'flex');
                 } else {
-                    $('.menu-item').each(function() {
-                        if ($(this).data('category') === selectedCategory) {
-                            $(this).stop(true, true).fadeIn(250);
-                        } else {
-                            $(this).stop(true, true).hide();
-                        }
-                    });
+                    $('#btnScrollTop').fadeOut(200);
                 }
             });
 
-            // 4. jQuery: Kalkulasi Realtime pada Modal Order
+            $('#btnScrollTop').on('click', function() {
+                $('html, body').animate({ scrollTop: 0 }, 400);
+            });
+
+            // ========================================================
+            // 7. FILTER KATEGORI & PENCARIAN MENU INSTAN (JQUERY LIVE SEARCH)
+            // ========================================================
+            let currentCategory = 'all';
+
+            function filterMenuCards() {
+                const query = $('#menuSearch').val().toLowerCase().trim();
+                let visibleCount = 0;
+
+                // Tampilkan / sembunyikan tombol reset pencarian
+                if (query.length > 0) {
+                    $('#clearSearchBtn').show();
+                } else {
+                    $('#clearSearchBtn').hide();
+                }
+
+                $('.menu-item').each(function() {
+                    const itemCat = $(this).data('category');
+                    const itemText = $(this).text().toLowerCase();
+
+                    const matchCategory = (currentCategory === 'all' || itemCat === currentCategory);
+                    const matchQuery = (query === '' || itemText.indexOf(query) !== -1);
+
+                    if (matchCategory && matchQuery) {
+                        $(this).stop(true, true).fadeIn(200);
+                        visibleCount++;
+                    } else {
+                        $(this).stop(true, true).hide();
+                    }
+                });
+
+                // Update counter menu
+                $('#menuCountNumber').text(visibleCount);
+
+                // Tampilkan empty state jika tidak ada menu yang cocok
+                if (visibleCount === 0) {
+                    $('#noMenuFound').fadeIn(200);
+                } else {
+                    $('#noMenuFound').hide();
+                }
+            }
+
+            // Event saat tombol kategori diklik
+            $('.filter-btn').on('click', function() {
+                currentCategory = $(this).data('category');
+
+                $('.filter-btn')
+                    .removeClass('bg-coffee text-white border-coffee-dark active-filter shadow-sm')
+                    .addClass('bg-white text-stone-800 border-cream-300');
+                
+                $(this)
+                    .addClass('bg-coffee text-white border-coffee-dark active-filter shadow-sm')
+                    .removeClass('bg-white text-stone-800 border-cream-300');
+
+                filterMenuCards();
+            });
+
+            // Event saat mengetik di form pencarian
+            $('#menuSearch').on('keyup input', function() {
+                filterMenuCards();
+            });
+
+            // Tombol Reset Pencarian
+            $('#clearSearchBtn').on('click', function() {
+                $('#menuSearch').val('').focus();
+                filterMenuCards();
+            });
+
+            // Tombol Reset Filter di Empty State
+            $('#resetFilterBtn').on('click', function() {
+                $('#menuSearch').val('');
+                currentCategory = 'all';
+                $('.filter-btn')
+                    .removeClass('bg-coffee text-white border-coffee-dark active-filter shadow-sm')
+                    .addClass('bg-white text-stone-800 border-cream-300');
+                $('.filter-btn[data-category="all"]')
+                    .addClass('bg-coffee text-white border-coffee-dark active-filter shadow-sm')
+                    .removeClass('bg-white text-stone-800 border-cream-300');
+                filterMenuCards();
+            });
+
+            // ========================================================
+            // 8. INTERACTIVE FAQ ACCORDION
+            // ========================================================
+            $('.faq-toggle').on('click', function() {
+                const $item = $(this).closest('.faq-item');
+                const $content = $item.find('.faq-content');
+                const $icon = $item.find('.faq-icon');
+                const isCurrentlyOpen = !$content.is(':hidden');
+
+                // Tutup semua item lain
+                $('.faq-content').slideUp(200);
+                $('.faq-icon').text('+').removeClass('bg-coffee text-white').addClass('bg-white text-coffee');
+                $('.faq-item').removeClass('border-coffee').addClass('border-cream-300');
+
+                // Toggle item yang diklik
+                if (!isCurrentlyOpen) {
+                    $content.stop(true, true).slideDown(200);
+                    $icon.text('−').removeClass('bg-white text-coffee').addClass('bg-coffee text-white');
+                    $item.removeClass('border-cream-300').addClass('border-coffee');
+                }
+            });
+
+            // ========================================================
+            // 9. STEPPER JUMLAH PORSI (+ / -) JQUERY
+            // ========================================================
+            // Stepper Modal Order
+            $('#modalQtyPlus').on('click', function() {
+                let val = parseInt($('#modalQty').val(), 10) || 1;
+                if (val < 50) {
+                    $('#modalQty').val(val + 1);
+                    updateModalTotal();
+                }
+            });
+
+            $('#modalQtyMinus').on('click', function() {
+                let val = parseInt($('#modalQty').val(), 10) || 1;
+                if (val > 1) {
+                    $('#modalQty').val(val - 1);
+                    updateModalTotal();
+                }
+            });
+
+            // Stepper Fast Order Form
+            $('#fastQtyPlus').on('click', function() {
+                let val = parseInt($('#custQty').val(), 10) || 1;
+                if (val < 50) {
+                    $('#custQty').val(val + 1);
+                    updateFastOrderTotal();
+                }
+            });
+
+            $('#fastQtyMinus').on('click', function() {
+                let val = parseInt($('#custQty').val(), 10) || 1;
+                if (val > 1) {
+                    $('#custQty').val(val - 1);
+                    updateFastOrderTotal();
+                }
+            });
+
+            // ========================================================
+            // 10. KALKULATOR HARGA REALTIME MODAL ORDER
+            // ========================================================
             function updateModalTotal() {
                 const basePrice = parseInt($('#modalBasePrice').val(), 10) || 0;
                 const sizeExtra = parseInt($('#modalCupSize').find(':selected').data('extra') || 0, 10);
@@ -1330,11 +1654,13 @@
                 $('#modalTotalPriceDisplay').text('Rp ' + total.toLocaleString('id-ID'));
             }
 
-            $('#modalCupSize, #modalTopping, #modalQty').on('change input', function() {
+            $('#modalCupSize, #modalTopping').on('change', function() {
                 updateModalTotal();
             });
 
-            // 5. jQuery: Kalkulasi Realtime pada Fast Order Form
+            // ========================================================
+            // 11. KALKULATOR HARGA REALTIME FAST ORDER FORM
+            // ========================================================
             function updateFastOrderTotal() {
                 const selectedOption = $('#custDrink').find(':selected');
                 const price = parseInt(selectedOption.data('price'), 10) || 15000;
@@ -1344,14 +1670,14 @@
                 $('#fastOrderTotal').text('Rp ' + total.toLocaleString('id-ID'));
             }
 
-            $('#custDrink, #custQty').on('change input', function() {
+            $('#custDrink').on('change', function() {
                 updateFastOrderTotal();
             });
-
-            // Panggil sekali di awal untuk inisialisasi total fast order
             updateFastOrderTotal();
 
-            // 6. jQuery: Buka Modal Order saat Klik Tombol Pesan
+            // ========================================================
+            // 12. BUKA & TUTUP MODAL ORDER
+            // ========================================================
             $(document).on('click', '.btn-order-item', function(e) {
                 e.preventDefault();
                 const name = $(this).data('name') || "Signature D'Bright";
@@ -1364,7 +1690,6 @@
                 $('#modalCupSize').val('Regular (Medium)');
                 $('#modalTopping').val('Tanpa Topping Tambahan');
 
-                // Jika kategori snack, otomatis sesuaikan gula
                 if (category === 'snack') {
                     $('#modalSugarLevel').val('Bukan Minuman (Snack)');
                 } else {
@@ -1373,12 +1698,11 @@
 
                 updateModalTotal();
 
-                // Tampilkan modal dengan fadeIn
                 $('#orderModal').css('display', 'flex').hide().fadeIn(200);
                 $('body').addClass('overflow-hidden');
+                showToast(`Pilihan menu: ${name}`);
             });
 
-            // 7. jQuery: Tutup Modal
             $('.btn-close-modal').on('click', function() {
                 $('#orderModal').fadeOut(200, function() {
                     $('body').removeClass('overflow-hidden');
@@ -1393,7 +1717,35 @@
                 }
             });
 
-            // 8. jQuery: Submit Modal Form -> Kirim ke WhatsApp
+            // ========================================================
+            // 13. SALIN ALAMAT & KONTAK WHATSAPP DENGAN FEEDBACK
+            // ========================================================
+            $('#btnCopyAddress').on('click', function() {
+                const address = $('#outletAddressText').text().trim();
+                navigator.clipboard.writeText(address).then(() => {
+                    const $btn = $(this);
+                    $btn.text('Tersalin! ✓').addClass('bg-coffee text-white border-coffee');
+                    showToast('Alamat D\'Bright Coffee berhasil disalin!');
+                    setTimeout(() => {
+                        $btn.text('Salin Alamat').removeClass('bg-coffee text-white border-coffee');
+                    }, 2000);
+                });
+            });
+
+            $('#btnCopyPhone').on('click', function() {
+                navigator.clipboard.writeText("085705952173").then(() => {
+                    const $btn = $(this);
+                    $btn.text('Tersalin! ✓').addClass('bg-coffee text-white border-coffee');
+                    showToast('Nomor WhatsApp 085705952173 berhasil disalin!');
+                    setTimeout(() => {
+                        $btn.text('Salin Nomor').removeClass('bg-coffee text-white border-coffee');
+                    }, 2000);
+                });
+            });
+
+            // ========================================================
+            // 14. SUBMIT FORM MODAL -> WHATSAPP
+            // ========================================================
             $('#modalOrderForm').on('submit', function(e) {
                 e.preventDefault();
                 const name = $('#modalCustName').val().trim();
@@ -1405,6 +1757,8 @@
                 const notes = $('#modalNotes').val().trim() || "-";
                 const total = $('#modalTotalPriceDisplay').text();
 
+                showToast('Menghubungkan ke WhatsApp...');
+
                 const message = `Halo D'BRIGHT COFFEE!%0A%0ASaya ingin memesan via Web:%0A----------------------------%0ANama Pemesan: ${encodeURIComponent(name)}%0AMenu Pilihan: ${encodeURIComponent(drink)}%0AJumlah Porsi: ${encodeURIComponent(qty)}%0AUkuran: ${encodeURIComponent(size)}%0ALevel Gula: ${encodeURIComponent(sugar)}%0ATopping Tambahan: ${encodeURIComponent(topping)}%0ACatatan: ${encodeURIComponent(notes)}%0AEstimasi Total: ${encodeURIComponent(total)}%0A----------------------------%0AMohon konfirmasi dan info pemesanan ya. Terima kasih!`;
 
                 const waUrl = `https://wa.me/${WA_PHONE_NUMBER}?text=${message}`;
@@ -1414,7 +1768,9 @@
                 });
             });
 
-            // 9. jQuery: Submit Fast Order Form -> Kirim ke WhatsApp
+            // ========================================================
+            // 15. SUBMIT FAST ORDER FORM -> WHATSAPP
+            // ========================================================
             $('#fastOrderForm').on('submit', function(e) {
                 e.preventDefault();
                 const name = $('#custName').val().trim();
@@ -1423,6 +1779,8 @@
                 const sugar = $('#custSugar').val();
                 const note = $('#custNote').val().trim() || "-";
                 const total = $('#fastOrderTotal').text();
+
+                showToast('Menghubungkan ke WhatsApp...');
 
                 const message = `Halo D'BRIGHT COFFEE!%0A%0ASaya ingin memesan via Form Cepat Web:%0A----------------------------%0ANama Pemesan: ${encodeURIComponent(name)}%0AMenu Pilihan: ${encodeURIComponent(drink)}%0AJumlah Porsi: ${encodeURIComponent(qty)}%0AVarian / Gula: ${encodeURIComponent(sugar)}%0ACatatan: ${encodeURIComponent(note)}%0AEstimasi Total: ${encodeURIComponent(total)}%0A----------------------------%0AMohon segera diproses ya, terima kasih!`;
 

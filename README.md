@@ -71,19 +71,31 @@ Website ini dibangun untuk mempromosikan 24 menu dari **D'BRIGHT COFFEE**, menca
 
 ---
 
-## ⚡ Fitur Interaktif Menggunakan jQuery
-1. **Filter Kategori Menu Dinamis**:
-   - Memfilter kartu menu Coffee, Non Coffee, dan Snack secara instan dengan efek animasi `fadeIn()` dan `hide()`.
-2. **Mobile Menu Drawer**:
-   - Toggle navigasi mobile yang responsif menggunakan efek `slideToggle()` dan `slideUp()`.
-3. **Kalkulator Harga Otomatis (Realtime Price Calculator)**:
-   - Menghitung estimasi total harga secara otomatis saat memilih ukuran cup (*Large* +Rp 3.000), *topping* tambahan (+Rp 3.000), dan jumlah porsi (*qty*).
-4. **Interactive Modal Pop-up**:
-   - Modal pemesanan dibuka dan ditutup dengan efek `fadeIn()` dan `fadeOut()`.
-5. **Smooth Scrolling**:
-   - Transisi scroll halus menuju setiap section menggunakan jQuery `$('html, body').animate()`.
-6. **Integrasi WhatsApp Otomatis**:
-   - Mengambil data pesanan dan kalkulasi total dari formulir untuk di-generate menjadi pesan WhatsApp terstruktur.
+## ⚡ Fitur Interaktif Lengkap Menggunakan jQuery
+1. **Pencarian Menu Instan (Live Search) & Counter Dinamis**:
+   - Mengetik nama menu langsung memfilter kartu secara realtime, dilengkapi penghitung jumlah menu yang tampil dan tombol reset instan.
+2. **Filter Kategori Menu Dinamis**:
+   - Memfilter kartu menu *Coffee*, *Non Coffee*, dan *Menu Snack* secara instan dengan efek animasi `fadeIn()` dan `hide()`.
+3. **Hitung Mundur Promo Harian (Live Countdown Timer)**:
+   - Jam hitung mundur otomatis yang berdetak setiap detik menuju jam penutupan promo harian (22:00 WITA).
+4. **Status Operasional Outlet Real-Time**:
+   - Badge otomatis mendeteksi waktu WITA saat ini untuk menampilkan indikator `● Buka Sekarang` atau `○ Tutup Sementara`.
+5. **Accordion FAQ Interaktif**:
+   - Tanya jawab yang dapat dibuka dan ditutup dengan efek `slideToggle()`, animasi ikon `+` / `−`, dan active border.
+6. **Stepper Jumlah Porsi (+ / -)**:
+   - Tombol pengatur kuantitas porsi yang otomatis menyelaraskan dan memperbarui total harga.
+7. **Kalkulator Harga Real-time**:
+   - Menghitung estimasi total harga secara otomatis pada modal dan form order cepat saat memilih ukuran cup, topping tambahan, dan jumlah porsi.
+8. **Salin Alamat & Kontak dengan Feedback**:
+   - Tombol copy-to-clipboard dengan umpan balik tombol `Tersalin! ✓` dan notifikasi toast.
+9. **Floating Toast Notification**:
+   - Pesan feedback melayang di layar saat berinteraksi dengan menu atau menyalin kontak.
+10. **Scroll-To-Top Button**:
+    - Tombol kembali ke atas yang otomatis muncul saat scroll melebihi 350px dan membawa halaman naik secara halus.
+11. **Mobile Menu Drawer**:
+    - Toggle navigasi mobile yang responsif menggunakan efek `slideToggle()` dan `slideUp()`.
+12. **Integrasi WhatsApp Otomatis**:
+    - Membentuk pesan pemesanan terstruktur lengkap dengan rincian pesanan dan total harga siap kirim ke WhatsApp.
 
 ---
 
