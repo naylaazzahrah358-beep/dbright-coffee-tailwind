@@ -13,7 +13,7 @@
 <br>
 <img src="dbright-banner.jpg" alt="D'Bright Coffee Product Banner" width="480" style="box-shadow: 0 10px 30px rgba(0,0,0,0.25);">
 
-### **D'BRIGHT COFFEE - MENU RESMI**
+### **D'BRIGHT COFFEE - MENU**
 **Website Promosi Penjualan Minuman & Snack Berbasis Tailwind CSS & jQuery**
 
 🌐 **Demo Live URL**: **[https://naylaazzahrah358-beep.github.io/dbright-coffee-tailwind/](https://naylaazzahrah358-beep.github.io/dbright-coffee-tailwind/)**  
@@ -25,7 +25,7 @@
 ---
 
 ## 📌 Tentang Proyek
-Website ini dibangun untuk mempromosikan 24 menu resmi dari **D'BRIGHT COFFEE**, mencakup kategori **Coffee**, **Non Coffee**, dan **Menu Snack** dengan harga resmi yang cocok di kantong mahasiswa. Desain menggunakan tema **Cream & Putih**, tata letak lurus elegan (*non-rounded*), serta interaktivitas dinamis berbasis **jQuery** dan **Tailwind CSS**.
+Website ini dibangun untuk mempromosikan 24 menu dari **D'BRIGHT COFFEE**, mencakup kategori **Coffee**, **Non Coffee**, dan **Menu Snack** dengan harga bersahabat yang cocok di kantong mahasiswa. Desain menggunakan tema **Cream & Putih**, tata letak lurus elegan (*non-rounded*), serta interaktivitas dinamis berbasis **jQuery** dan **Tailwind CSS**.
 
 ---
 
@@ -37,7 +37,7 @@ Website ini dibangun untuk mempromosikan 24 menu resmi dari **D'BRIGHT COFFEE**,
 
 ---
 
-## 📋 Daftar 24 Menu Resmi & Harga
+## 📋 Daftar 24 Menu & Harga
 
 ### ☕ 1. Kategori COFFEE
 1. **Americano (Hot/ice)** - Rp 10.000
