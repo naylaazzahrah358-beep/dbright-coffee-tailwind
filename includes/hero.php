@@ -46,6 +46,17 @@
                     </a>
                 </div>
 
+                <!-- Akses Cepat Terpadu Admin & Pesanan di Halaman Utama -->
+                <div class="mt-3.5 flex items-center justify-center lg:justify-start gap-3 text-xs font-bold">
+                    <button type="button" class="btn-buka-pesanan text-stone-700 hover:text-coffee underline inline-flex items-center gap-1 cursor-pointer">
+                        📋 Riwayat Pesanan (<?= $countPesanan ?>)
+                    </button>
+                    <span class="text-stone-400">&bull;</span>
+                    <a href="index.php?toggle_admin=1" class="text-stone-700 hover:text-coffee underline inline-flex items-center gap-1">
+                        ⚙️ <?= $isAdmin ? 'Mode Admin: Aktif [Matikan]' : 'Mode Admin (Kelola Menu)' ?>
+                    </a>
+                </div>
+
                 <!-- Statistik Menu Dihitung Otomatis PHP -->
                 <div class="grid grid-cols-3 gap-4 pt-8 mt-10 border-t-2 border-cream-300 max-w-lg mx-auto lg:mx-0">
                     <div class="bg-white p-3 border border-cream-300">

@@ -429,9 +429,14 @@
             $('#modalTambahMenu').css('display', 'flex').hide().fadeIn(150);
         });
 
-        $('#btnAdminLihatPesanan').on('click', function() {
+        $('#btnAdminLihatPesanan, .btn-buka-pesanan').on('click', function(e) {
+            e.preventDefault();
             $('#modalRiwayatPesanan').css('display', 'flex').hide().fadeIn(150);
         });
+
+        <?php if (!empty($autoOpenPesanan)): ?>
+        $('#modalRiwayatPesanan').css('display', 'flex').hide().fadeIn(200);
+        <?php endif; ?>
 
         $(document).on('click', '.btn-edit-menu-action', function(e) {
             e.preventDefault();

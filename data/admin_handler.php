@@ -27,12 +27,26 @@ if (isset($_GET['admin'])) {
     }
 }
 
+if (isset($_GET['toggle_admin'])) {
+    if (!empty($_SESSION['is_admin'])) {
+        unset($_SESSION['is_admin']);
+        $_SESSION['flash'] = ['type' => 'info', 'message' => 'Mode Admin telah dinonaktifkan.'];
+    } else {
+        $_SESSION['is_admin'] = true;
+        $_SESSION['flash'] = ['type' => 'success', 'message' => 'Mode Admin Aktif! Anda sekarang dapat menambah, mengedit, dan menghapus menu langsung di halaman ini.'];
+    }
+    header('Location: index.php#menu');
+    exit;
+}
+
 if (isset($_GET['logout_admin'])) {
     unset($_SESSION['is_admin']);
     $_SESSION['flash'] = ['type' => 'info', 'message' => 'Mode Admin telah dinonaktifkan.'];
     header('Location: index.php');
     exit;
 }
+
+$autoOpenPesanan = !empty($_GET['lihat_pesanan']);
 
 // 2. PROSES FORM POST ADMIN (LOGIN & CRUD)
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
