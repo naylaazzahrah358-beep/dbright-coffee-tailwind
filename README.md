@@ -1,7 +1,8 @@
-# 🥤 D'BRIGHT COFFEE - Website Promosi Jualan (Tailwind CSS & jQuery)
+# 🥤 D'BRIGHT COFFEE - Website Promosi Jualan (PHP, Tailwind CSS & jQuery)
 
 <div align="center">
 
+![PHP](https://img.shields.io/badge/PHP-8.2+-777BB4?style=for-the-badge&logo=php&logoColor=white)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v3-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
 ![jQuery](https://img.shields.io/badge/jQuery-3.7.1-0769AD?style=for-the-badge&logo=jquery&logoColor=white)
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
@@ -14,7 +15,7 @@
 <img src="dbright-banner.jpg" alt="D'Bright Coffee Product Banner" width="480" style="box-shadow: 0 10px 30px rgba(0,0,0,0.25);">
 
 ### **D'BRIGHT COFFEE - MENU**
-**Website Promosi Penjualan Minuman & Snack Berbasis Tailwind CSS & jQuery**
+**Website Promosi Penjualan Minuman & Snack Berbasis PHP Modular, Tailwind CSS & jQuery**
 
 🌐 **Demo Live URL**: **[https://naylaazzahrah358-beep.github.io/dbright-coffee-tailwind/](https://naylaazzahrah358-beep.github.io/dbright-coffee-tailwind/)**  
 👤 **Pengembang**: **Nayla Azzahra R** (Mahasiswi Teknik Komputer FT-UNM, Kelas C - Angkatan 2025)  
@@ -99,12 +100,100 @@ Website ini dibangun untuk mempromosikan 24 menu dari **D'BRIGHT COFFEE**, menca
 
 ---
 
+## 📂 Struktur Berkas Proyek (PHP Modular Architecture)
+
+Proyek ini telah direfaktor menggunakan arsitektur modular PHP yang rapi, dinamis (*DRY - Don't Repeat Yourself*), terintegrasi dengan database MySQL, dan mudah dirawat:
+
+```text
+Tailwind css/
+├── data/
+│   ├── admin_handler.php   # Backend controller aksi admin (Create, Read, Update, Delete menu)
+│   ├── db.php              # Konfigurasi koneksi MySQLi (database: tugasnela_db)
+│   └── menu_data.php       # Data master fallback: konfigurasi outlet, 24 menu, FAQ, testimoni & helper
+├── includes/
+│   ├── admin_panel.php     # Panel admin terpadu (modal tambah/edit menu & modal riwayat pesanan)
+│   ├── header.php          # Tag head HTML, Tailwind CDN, Google Fonts, Custom CSS & jQuery CDN
+│   ├── splash.php          # Splash / opening screen animasi proses seduhan
+│   ├── navbar.php          # Top promo bar & navigasi sticky responsif
+│   ├── hero.php            # Banner utama & counter statistik menu otomatis
+│   ├── marquee.php         # Teks berjalan animasi (Running Marquee)
+│   ├── keunggulan.php      # 4 Poin keunggulan produk (looping PHP)
+│   ├── menu.php            # Katalog 24 menu interaktif (looping foreach PHP dari database/array)
+│   ├── promo.php           # 3 Paket combo hemat & live countdown timer promo
+│   ├── cara_pesan.php      # Panduan 3 langkah pemesanan
+│   ├── testimoni.php       # Ulasan pelanggan (looping PHP)
+│   ├── faq.php             # Accordion FAQ tanya jawab interaktif
+│   ├── kontak.php          # Info outlet, form order cepat (opsi menu dinamis PHP) & Google Maps
+│   ├── modal.php           # Modal popup formulir pemesanan detail
+│   ├── footer.php          # Footer, profil pengembang, scroll-to-top & toast notification
+│   └── scripts.php         # Seluruh logika script jQuery & integrasi hotline WhatsApp
+├── admin.php               # Shortcut akses langsung panel admin
+├── dbright_coffee.sql      # Berkas ekspor database MySQL dari phpMyAdmin (tugasnela_db)
+├── index.html              # Berkas versi statis (untuk preview langsung / GitHub Pages)
+├── index.php               # Berkas utama aplikasi PHP (menggabungkan semua modul via require_once)
+├── pesanan.php             # Halaman riwayat data pesanan masuk pelanggan dari database MySQL
+├── process-order.php       # Backend handler pemrosesan formulir pemesanan (metode POST ke database)
+├── setup_database.php      # Script otomatis pembuatan database dan tabel menu & pesanan
+├── dbright-banner.jpg      # Gambar banner produk resmi
+├── dbright-logo.jpg        # Gambar logo resmi D'Bright Coffee
+└── README.md               # Dokumentasi lengkap proyek
+```
+
+---
+
+## 🗄️ Database MySQL & phpMyAdmin
+
+Proyek ini telah dilengkapi dengan basis data relasional MySQL menggunakan phpMyAdmin:
+- **Nama Database**: `tugasnela_db`
+- **Tabel 1**: `menu` (Menyimpan 24 item menu makanan & minuman, harga, kategori, badge, dan status unggulan)
+- **Tabel 2**: `pesanan` (Menyimpan data pesanan pelanggan, nama, varian, gula, topping, catatan, total harga, dan waktu pemesanan)
+- **Berkas Dump SQL**: [`dbright_coffee.sql`](dbright_coffee.sql) *(Hasil ekspor resmi dari phpMyAdmin / MariaDB)*
+
+### 📥 Cara Mengimpor Database via phpMyAdmin:
+1. Buka **XAMPP Control Panel**, nyalakan modul **Apache** dan **MySQL** (klik *Start*).
+2. Buka browser dan masuk ke **phpMyAdmin**: [http://localhost/phpmyadmin](http://localhost/phpmyadmin).
+3. Klik menu **Import** pada navigasi atas phpMyAdmin.
+4. Klik tombol **Choose File** / **Pilih Berkas**, lalu pilih berkas [`dbright_coffee.sql`](dbright_coffee.sql) yang ada di folder proyek ini.
+5. Gulir ke bawah dan klik tombol **Import** / **Kirim**.
+6. Database `tugasnela_db` beserta tabel `menu` (24 data awal) dan `pesanan` otomatis dibuat dan siap digunakan!
+
+> **Opsi Alternatif**: Anda juga dapat menjalankan script setup otomatis dengan membuka browser ke: `http://localhost/dbright-coffee/setup_database.php` atau via terminal: `php setup_database.php`.
+
+---
+
 ## 🚀 Cara Menjalankan Secara Lokal
-1. Clone repository ini:
+
+### Cara 1: Menggunakan XAMPP Apache & MySQL (Direkomendasikan)
+1. Pindahkan atau salin folder proyek ke dalam direktori `htdocs` XAMPP:
+   `C:\xampp\htdocs\dbright-coffee`
+2. Buka **XAMPP Control Panel**, lalu klik **Start** pada modul **Apache** dan **MySQL**.
+3. Pastikan database telah diimpor sesuai langkah di atas.
+4. Buka browser dan akses: **`http://localhost/dbright-coffee`**
+5. Untuk mengelola menu dan melihat pesanan, klik tombol **Kelola Menu & Pesanan** di navbar atas atau akses **`http://localhost/dbright-coffee/admin.php`**.
+
+### Cara 2: Menggunakan PHP Built-in Server
+1. Buka Terminal / PowerShell di folder proyek ini:
    ```bash
-   git clone https://github.com/naylaazzahrah358-beep/dbright-coffee-tailwind.git
+   cd "d:\SEM 3\pemograman web\Tailwind css"
    ```
-2. Buka folder proyek di browser atau klik ganda berkas `index.html`.
+2. Pastikan MySQL di XAMPP sudah berjalan (*Start* MySQL).
+3. Jalankan server bawaan PHP:
+   ```bash
+   C:\xampp\php\php.exe -S localhost:8000
+   ```
+   *(Atau ketik `php -S localhost:8000` jika PHP sudah terdaftar di Path).*
+4. Buka browser dan akses: **`http://localhost:8000`**
+
+### Cara 3: Membuka Versi HTML Statis
+- Cukup klik ganda berkas `index.html` untuk membuka langsung di browser.
+
+---
+
+## 🌐 Repository GitHub
+
+- **Status Repository**: **Publik (Public)**
+- **URL Repository**: [https://github.com/naylaazzahrah358-beep/dbright-coffee-tailwind](https://github.com/naylaazzahrah358-beep/dbright-coffee-tailwind)
+- **Live Demo (GitHub Pages)**: [https://naylaazzahrah358-beep.github.io/dbright-coffee-tailwind/](https://naylaazzahrah358-beep.github.io/dbright-coffee-tailwind/)
 
 ---
 
