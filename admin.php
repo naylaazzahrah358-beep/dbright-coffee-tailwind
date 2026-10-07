@@ -66,7 +66,7 @@ $dbStatus = (isset($conn) && !$conn->connect_error);
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script>
         tailwind.config = {
@@ -81,28 +81,29 @@ $dbStatus = (isset($conn) && !$conn->connect_error);
                         },
                         cream: {
                             50: '#FDFBF7',
-                            100: '#EDE0D4',
-                            200: '#E6CCB2',
-                            300: '#DDB892',
-                            400: '#B08968'
+                            100: '#FAF6EE',
+                            200: '#F4ECE1',
+                            300: '#EAE0D0',
+                            400: '#DECDB5',
+                            500: '#CBB496'
                         }
                     },
                     fontFamily: {
                         sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-                        heading: ['"Space Grotesk"', 'sans-serif']
+                        heading: ['Poppins', 'sans-serif']
                     }
                 }
             }
         }
     </script>
 </head>
-<body class="bg-cream-50 text-stone-900 font-sans min-h-screen flex flex-col">
+<body class="bg-gradient-to-b from-cream-50 via-cream-100/40 to-cream-50 text-stone-900 font-sans min-h-screen flex flex-col">
 
     <!-- Top Admin Header Bar -->
     <header class="bg-stone-900 text-cream-100 border-b-4 border-amber-500 sticky top-0 z-40 shadow-xl">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-col sm:flex-row items-center justify-between gap-3">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-col sm:flex-row items-center justify-between gap-3">
             <div class="flex items-center gap-3">
-                <img src="<?= htmlspecialchars($outlet['logo']) ?>" alt="Logo" class="w-10 h-10 border border-amber-400 object-cover">
+                <img src="<?= htmlspecialchars($outlet['logo']) ?>" alt="Logo" class="w-10 h-10 rounded-xl border border-amber-400/80 object-cover shadow-xs">
                 <div>
                     <h1 class="font-heading font-extrabold text-lg text-white leading-tight">
                         D'BRIGHT <span class="text-amber-400">COFFEE</span> &bull; Panel Admin CRUD
@@ -110,8 +111,9 @@ $dbStatus = (isset($conn) && !$conn->connect_error);
                     <div class="flex items-center gap-2 text-[11px] text-stone-400">
                         <span>Database: <strong class="text-amber-300"><?= htmlspecialchars($dbName) ?></strong></span>
                         <span>&bull;</span>
-                        <span class="<?= $dbStatus ? 'text-emerald-400 font-bold' : 'text-red-400 font-bold' ?>">
-                            ● <?= $dbStatus ? 'MySQL Terhubung' : 'Gagal Koneksi' ?>
+                        <span class="<?= $dbStatus ? 'text-emerald-400 font-bold' : 'text-red-400 font-bold' ?> flex items-center gap-1">
+                            <span class="w-2 h-2 rounded-full <?= $dbStatus ? 'bg-emerald-400' : 'bg-red-400' ?> inline-block"></span>
+                            <?= $dbStatus ? 'MySQL Terhubung' : 'Gagal Koneksi' ?>
                         </span>
                     </div>
                 </div>
@@ -119,17 +121,17 @@ $dbStatus = (isset($conn) && !$conn->connect_error);
 
             <!-- Quick Action Links -->
             <div class="flex flex-wrap items-center gap-2 text-xs font-bold">
-                <a href="index.php" class="px-3.5 py-2 bg-coffee hover:bg-coffee-dark text-white border border-coffee-light transition cursor-pointer flex items-center gap-1.5 shadow-sm">
+                <a href="index.php" class="px-4 py-2 bg-coffee hover:bg-coffee-dark text-white rounded-full transition cursor-pointer flex items-center gap-1.5 shadow-sm">
                     <span>🌐</span> Buka Web Utama
                 </a>
-                <a href="http://localhost/phpmyadmin/index.php?route=/database/structure&db=<?= urlencode($dbName) ?>" target="_blank" class="px-3 py-2 bg-stone-800 hover:bg-stone-700 text-cream-200 border border-stone-700 transition cursor-pointer flex items-center gap-1">
+                <a href="http://localhost/phpmyadmin/index.php?route=/database/structure&db=<?= urlencode($dbName) ?>" target="_blank" class="px-3.5 py-2 bg-stone-800 hover:bg-stone-700 text-cream-200 border border-stone-700 rounded-full transition cursor-pointer flex items-center gap-1">
                     <span>🗄️</span> phpMyAdmin
                 </a>
                 <form action="admin.php" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin memulihkan 24 menu default D\'Bright Coffee? Data modifikasi akan di-reset.');" class="inline">
                     <input type="hidden" name="action" value="reset_default_menus">
                     <input type="hidden" name="redirect_to" value="admin.php">
-                    <button type="submit" class="px-3 py-2 bg-stone-800 hover:bg-stone-700 text-amber-300 border border-stone-700 transition cursor-pointer flex items-center gap-1 text-xs font-bold" title="Reset data ke 24 menu awal">
-                        <span>🔄</span> Reset Menu Default
+                    <button type="submit" class="px-3.5 py-2 bg-stone-800 hover:bg-stone-700 text-amber-300 border border-stone-700 rounded-full transition cursor-pointer flex items-center gap-1 text-xs font-bold" title="Reset data ke 24 menu awal">
+                        <span>🔄</span> Reset Default
                     </button>
                 </form>
             </div>
@@ -141,57 +143,57 @@ $dbStatus = (isset($conn) && !$conn->connect_error);
 
         <!-- Flash Notice Notification -->
         <?php if ($flash): ?>
-            <div id="flashNotice" class="mb-6 p-4 border-2 shadow-[4px_4px_0px_0px_#1c1917] text-xs font-bold flex items-center justify-between <?= $flash['type'] === 'success' ? 'bg-emerald-100 text-emerald-900 border-emerald-900' : ($flash['type'] === 'error' ? 'bg-red-100 text-red-900 border-red-900' : 'bg-blue-100 text-blue-900 border-blue-900') ?>">
+            <div id="flashNotice" class="mb-6 p-4 rounded-2xl border shadow-xs text-xs font-bold flex items-center justify-between <?= $flash['type'] === 'success' ? 'bg-emerald-50 text-emerald-900 border-emerald-300' : ($flash['type'] === 'error' ? 'bg-red-50 text-red-900 border-red-300' : 'bg-blue-50 text-blue-900 border-blue-300') ?>">
                 <div class="flex items-center gap-2">
                     <span class="text-base"><?= $flash['type'] === 'success' ? '✅' : ($flash['type'] === 'error' ? '⚠️' : 'ℹ️') ?></span>
                     <span><?= htmlspecialchars($flash['message']) ?></span>
                 </div>
-                <button onclick="$('#flashNotice').fadeOut()" class="text-stone-600 hover:text-stone-900 font-bold px-2 py-0.5">&times;</button>
+                <button onclick="$('#flashNotice').fadeOut()" class="text-stone-600 hover:text-stone-900 font-bold px-2 py-0.5 cursor-pointer">&times;</button>
             </div>
         <?php endif; ?>
 
         <!-- Statistics Cards -->
-        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 mb-8">
-            <div class="bg-white p-4 border-2 border-stone-900 shadow-[4px_4px_0px_0px_#1c1917]">
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3.5 mb-8">
+            <div class="bg-white p-4.5 rounded-2xl border border-cream-200/90 shadow-sm hover:shadow-md transition">
                 <span class="text-[11px] font-bold text-stone-500 uppercase tracking-wider block">Total Menu</span>
                 <p class="text-2xl font-black text-stone-900 mt-1"><?= $totalMenu ?></p>
-                <span class="text-[10px] text-stone-400">Tersimpan di MySQL</span>
+                <span class="text-[10px] text-stone-400 font-medium">Tersimpan di MySQL</span>
             </div>
-            <div class="bg-white p-4 border-2 border-stone-900 shadow-[4px_4px_0px_0px_#7F5539]">
+            <div class="bg-white p-4.5 rounded-2xl border border-cream-200/90 shadow-sm hover:shadow-md transition">
                 <span class="text-[11px] font-bold text-coffee uppercase tracking-wider block">Coffee</span>
                 <p class="text-2xl font-black text-coffee mt-1"><?= $countCoffee ?></p>
-                <span class="text-[10px] text-stone-400">Varian Kopi</span>
+                <span class="text-[10px] text-stone-400 font-medium">Varian Kopi</span>
             </div>
-            <div class="bg-white p-4 border-2 border-stone-900 shadow-[4px_4px_0px_0px_#44403c]">
+            <div class="bg-white p-4.5 rounded-2xl border border-cream-200/90 shadow-sm hover:shadow-md transition">
                 <span class="text-[11px] font-bold text-stone-600 uppercase tracking-wider block">Non-Coffee</span>
                 <p class="text-2xl font-black text-stone-700 mt-1"><?= $countNonCoffee ?></p>
-                <span class="text-[10px] text-stone-400">Matcha, Cokelat, dll</span>
+                <span class="text-[10px] text-stone-400 font-medium">Matcha, Cokelat, dll</span>
             </div>
-            <div class="bg-white p-4 border-2 border-stone-900 shadow-[4px_4px_0px_0px_#B08968]">
+            <div class="bg-white p-4.5 rounded-2xl border border-cream-200/90 shadow-sm hover:shadow-md transition">
                 <span class="text-[11px] font-bold text-amber-700 uppercase tracking-wider block">Snack</span>
                 <p class="text-2xl font-black text-amber-800 mt-1"><?= $countSnack ?></p>
-                <span class="text-[10px] text-stone-400">Camilan & Makanan</span>
+                <span class="text-[10px] text-stone-400 font-medium">Camilan & Makanan</span>
             </div>
-            <div class="bg-white p-4 border-2 border-stone-900 shadow-[4px_4px_0px_0px_#1c1917]">
-                <span class="text-[11px] font-bold text-stone-500 uppercase tracking-wider block">Total Pesanan</span>
+            <div class="bg-white p-4.5 rounded-2xl border border-cream-200/90 shadow-sm hover:shadow-md transition">
+                <span class="text-[11px] font-bold text-stone-500 uppercase tracking-wider block">Pesanan</span>
                 <p class="text-2xl font-black text-stone-900 mt-1"><?= $countPesanan ?></p>
-                <span class="text-[10px] text-stone-400">Tabel pesanan</span>
+                <span class="text-[10px] text-stone-400 font-medium">Data Pelanggan</span>
             </div>
-            <div class="bg-white p-4 border-2 border-stone-900 shadow-[4px_4px_0px_0px_#7F5539]">
+            <div class="bg-white p-4.5 rounded-2xl border border-cream-200/90 shadow-sm hover:shadow-md transition">
                 <span class="text-[11px] font-bold text-emerald-700 uppercase tracking-wider block">Total Omset</span>
                 <p class="text-lg font-black text-emerald-800 mt-2 truncate"><?= formatRupiah($totalOmset) ?></p>
-                <span class="text-[10px] text-stone-400">Akumulasi Order</span>
+                <span class="text-[10px] text-stone-400 font-medium">Akumulasi Order</span>
             </div>
         </div>
 
         <!-- Section Grid: Form Create & Menu Table -->
-        <div class="grid lg:grid-cols-12 gap-8 items-start mb-12">
+        <div class="grid lg:grid-cols-12 gap-8 items-start mb-10">
             
             <!-- FORM TAMBAH MENU BARU (CREATE) -->
-            <div class="lg:col-span-4 bg-white p-6 border-3 border-stone-900 shadow-[8px_8px_0px_0px_#7F5539] sticky top-20">
-                <div class="border-b-2 border-cream-200 pb-3 mb-4">
-                    <span class="text-[10px] font-bold bg-amber-500 text-stone-950 px-2 py-0.5 uppercase tracking-wider inline-block">CREATE MENU</span>
-                    <h2 class="font-heading font-black text-lg text-stone-900 mt-1">➕ Tambah Menu Baru</h2>
+            <div class="lg:col-span-4 bg-white p-6 sm:p-7 rounded-3xl border border-cream-200/90 shadow-lg sticky top-24">
+                <div class="border-b border-cream-200 pb-3.5 mb-4">
+                    <span class="text-[10px] font-bold bg-amber-500 text-stone-950 px-2.5 py-0.5 uppercase tracking-wider rounded-full inline-block">CREATE MENU</span>
+                    <h2 class="font-heading font-black text-lg text-stone-900 mt-1.5">➕ Tambah Menu Baru</h2>
                     <p class="text-xs text-stone-500">Item baru akan langsung tersimpan di database MySQL <span class="font-bold text-coffee">tugasnela_db</span>.</p>
                 </div>
 
@@ -201,13 +203,13 @@ $dbStatus = (isset($conn) && !$conn->connect_error);
 
                     <div>
                         <label class="block font-bold text-stone-800 mb-1">Nama Menu *</label>
-                        <input type="text" name="nama" required placeholder="Contoh: Kopi Susu Aren Spesial" class="w-full p-2.5 bg-cream-50 border-2 border-cream-300 font-bold text-stone-900 outline-none focus:border-coffee transition">
+                        <input type="text" name="nama" required placeholder="Contoh: Kopi Susu Aren Spesial" class="w-full px-3.5 py-2.5 bg-cream-50 rounded-xl border border-cream-300 font-bold text-stone-900 outline-none focus:border-coffee focus:ring-2 focus:ring-coffee/15 transition">
                     </div>
 
                     <div class="grid grid-cols-2 gap-3">
                         <div>
                             <label class="block font-bold text-stone-800 mb-1">Kategori *</label>
-                            <select name="kategori" required class="w-full p-2.5 bg-white border-2 border-cream-300 font-bold outline-none focus:border-coffee transition">
+                            <select name="kategori" required class="w-full px-3.5 py-2.5 bg-white rounded-xl border border-cream-300 font-bold outline-none focus:border-coffee transition">
                                 <option value="coffee">Coffee</option>
                                 <option value="non-coffee">Non Coffee</option>
                                 <option value="snack">Menu Snack</option>
@@ -215,24 +217,24 @@ $dbStatus = (isset($conn) && !$conn->connect_error);
                         </div>
                         <div>
                             <label class="block font-bold text-stone-800 mb-1">Harga (Rp) *</label>
-                            <input type="number" name="harga" required min="1000" step="500" placeholder="15000" class="w-full p-2.5 bg-white border-2 border-cream-300 font-bold outline-none focus:border-coffee transition">
+                            <input type="number" name="harga" required min="1000" step="500" placeholder="15000" class="w-full px-3.5 py-2.5 bg-white rounded-xl border border-cream-300 font-bold outline-none focus:border-coffee transition">
                         </div>
                     </div>
 
                     <div class="grid grid-cols-2 gap-3">
                         <div>
                             <label class="block font-bold text-stone-800 mb-1">Badge Promosi</label>
-                            <input type="text" name="badge" placeholder="Contoh: Best Seller" class="w-full p-2 bg-white border border-cream-300 outline-none focus:border-coffee transition">
+                            <input type="text" name="badge" placeholder="Contoh: Best Seller" class="w-full px-3.5 py-2 bg-white rounded-xl border border-cream-300 outline-none focus:border-coffee transition">
                         </div>
                         <div>
                             <label class="block font-bold text-stone-800 mb-1">Subjudul Varian</label>
-                            <input type="text" name="subjudul" placeholder="Contoh: Kopi & Gula Aren Asli" class="w-full p-2 bg-white border border-cream-300 outline-none focus:border-coffee transition">
+                            <input type="text" name="subjudul" placeholder="Contoh: Kopi & Gula Aren Asli" class="w-full px-3.5 py-2 bg-white rounded-xl border border-cream-300 outline-none focus:border-coffee transition">
                         </div>
                     </div>
 
                     <div>
                         <label class="block font-bold text-stone-800 mb-1">Deskripsi Menu Lengkap</label>
-                        <textarea name="deskripsi" rows="3" placeholder="Tuliskan racikan rasa atau komposisi menu..." class="w-full p-2 bg-white border border-cream-300 outline-none focus:border-coffee transition"></textarea>
+                        <textarea name="deskripsi" rows="3" placeholder="Tuliskan racikan rasa atau komposisi menu..." class="w-full px-3.5 py-2.5 bg-white rounded-xl border border-cream-300 outline-none focus:border-coffee transition"></textarea>
                     </div>
 
                     <div class="flex items-center gap-2 pt-1">
@@ -241,7 +243,7 @@ $dbStatus = (isset($conn) && !$conn->connect_error);
                     </div>
 
                     <div class="pt-2">
-                        <button type="submit" class="w-full py-3 bg-stone-900 hover:bg-coffee text-white font-black uppercase tracking-wider border-2 border-stone-900 shadow-[4px_4px_0px_0px_#7F5539] hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5 transition cursor-pointer">
+                        <button type="submit" class="w-full py-3.5 bg-stone-900 hover:bg-coffee text-white font-black uppercase tracking-wider rounded-xl shadow-md hover:shadow-xl transition cursor-pointer">
                             + Simpan Menu ke Database
                         </button>
                     </div>
@@ -249,14 +251,14 @@ $dbStatus = (isset($conn) && !$conn->connect_error);
             </div>
 
             <!-- TABEL KELOLA MENU (READ, UPDATE, DELETE) -->
-            <div class="lg:col-span-8 bg-white border-3 border-stone-900 shadow-[8px_8px_0px_0px_#1c1917] overflow-hidden">
-                <div class="p-4 sm:p-5 bg-stone-900 text-cream-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b-2 border-amber-500">
+            <div class="lg:col-span-8 bg-white rounded-3xl border border-cream-200/90 shadow-lg overflow-hidden">
+                <div class="p-5 bg-stone-900 text-cream-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b-2 border-amber-500">
                     <div>
-                        <span class="text-[10px] font-bold bg-amber-500 text-stone-950 px-2 py-0.5 uppercase tracking-wider inline-block">READ & MANAGE</span>
+                        <span class="text-[10px] font-bold bg-amber-500 text-stone-950 px-2.5 py-0.5 uppercase tracking-wider rounded-full inline-block">READ & MANAGE</span>
                         <h2 class="font-heading font-black text-lg text-white mt-1">📋 Daftar Menu di Database (<?= $totalMenu ?> Item)</h2>
                     </div>
                     <div class="flex items-center gap-2">
-                        <input type="text" id="adminTableSearch" placeholder="Cari nama menu..." class="px-3 py-1.5 text-xs bg-stone-800 border border-stone-700 text-white placeholder-stone-400 outline-none focus:border-amber-400">
+                        <input type="text" id="adminTableSearch" placeholder="🔍 Cari nama menu..." class="px-4 py-2 text-xs bg-stone-800 border border-stone-700 rounded-full text-white placeholder-stone-400 outline-none focus:border-amber-400">
                     </div>
                 </div>
 
@@ -264,7 +266,7 @@ $dbStatus = (isset($conn) && !$conn->connect_error);
                 <div class="overflow-x-auto">
                     <table class="w-full text-left border-collapse text-xs">
                         <thead>
-                            <tr class="bg-cream-200 border-b-2 border-stone-900 font-bold text-stone-900">
+                            <tr class="bg-cream-100/70 border-b border-cream-200 font-bold text-stone-900">
                                 <th class="p-3 w-12 text-center">ID</th>
                                 <th class="p-3">Nama Menu</th>
                                 <th class="p-3">Kategori</th>
@@ -274,23 +276,23 @@ $dbStatus = (isset($conn) && !$conn->connect_error);
                                 <th class="p-3 text-center w-28">Aksi CRUD</th>
                             </tr>
                         </thead>
-                        <tbody id="adminMenuTableBody" class="divide-y divide-cream-300">
+                        <tbody id="adminMenuTableBody" class="divide-y divide-cream-200">
                             <?php if (empty($menuList)): ?>
                                 <tr>
                                     <td colspan="7" class="p-8 text-center text-stone-500 font-bold">
-                                        Tidak ada data menu di tabel `menu`. Silakan tambah menu baru atau klik tombol Reset Menu Default.
+                                        Tidak ada data menu di tabel `menu`. Silakan tambah menu baru atau klik tombol Reset Default.
                                     </td>
                                 </tr>
                             <?php else: ?>
                                 <?php foreach ($menuList as $m): ?>
-                                    <tr class="hover:bg-cream-100/60 transition menu-row" data-name="<?= strtolower(htmlspecialchars($m['nama'])) ?>">
+                                    <tr class="hover:bg-cream-50/80 transition menu-row" data-name="<?= strtolower(htmlspecialchars($m['nama'])) ?>">
                                         <td class="p-3 text-center font-mono font-bold text-stone-400">#<?= htmlspecialchars($m['id']) ?></td>
                                         <td class="p-3">
                                             <p class="font-bold text-stone-900 text-sm"><?= htmlspecialchars($m['nama']) ?></p>
                                             <p class="text-[11px] text-stone-500 line-clamp-1 max-w-xs"><?= htmlspecialchars($m['deskripsi']) ?></p>
                                         </td>
                                         <td class="p-3">
-                                            <span class="px-2 py-0.5 font-bold uppercase text-[10px] border <?= $m['kategori'] === 'coffee' ? 'bg-amber-100 text-amber-900 border-amber-300' : ($m['kategori'] === 'non-coffee' ? 'bg-emerald-100 text-emerald-900 border-emerald-300' : 'bg-orange-100 text-orange-900 border-orange-300') ?>">
+                                            <span class="px-2.5 py-0.5 font-bold uppercase text-[10px] rounded-full border <?= $m['kategori'] === 'coffee' ? 'bg-amber-50 text-amber-900 border-amber-200' : ($m['kategori'] === 'non-coffee' ? 'bg-emerald-50 text-emerald-900 border-emerald-200' : 'bg-orange-50 text-orange-900 border-orange-200') ?>">
                                                 <?= htmlspecialchars($m['kategori_label']) ?>
                                             </span>
                                         </td>
@@ -303,7 +305,7 @@ $dbStatus = (isset($conn) && !$conn->connect_error);
                                         </td>
                                         <td class="p-3 text-center whitespace-nowrap">
                                             <?php if (!empty($m['is_featured'])): ?>
-                                                <span class="px-2 py-0.5 bg-coffee text-white font-bold text-[10px] rounded-xs">⭐ Unggulan</span>
+                                                <span class="px-2.5 py-0.5 bg-coffee text-white font-bold text-[10px] rounded-full">⭐ Unggulan</span>
                                             <?php else: ?>
                                                 <span class="text-stone-400 text-[10px]">Standar</span>
                                             <?php endif; ?>
@@ -312,7 +314,7 @@ $dbStatus = (isset($conn) && !$conn->connect_error);
                                             <div class="flex items-center justify-center gap-1.5">
                                                 <!-- Tombol Edit (UPDATE) -->
                                                 <button type="button" 
-                                                    class="btn-edit-admin px-2 py-1 bg-amber-500 hover:bg-amber-600 text-stone-950 font-black text-[11px] border border-amber-600 transition cursor-pointer"
+                                                    class="btn-edit-admin px-2.5 py-1.5 bg-amber-500 hover:bg-amber-600 text-stone-950 font-black text-[11px] rounded-lg transition cursor-pointer"
                                                     title="Edit Menu Ini"
                                                     data-id="<?= (int)$m['id'] ?>"
                                                     data-nama="<?= htmlspecialchars($m['nama'], ENT_QUOTES) ?>"
@@ -330,8 +332,8 @@ $dbStatus = (isset($conn) && !$conn->connect_error);
                                                     <input type="hidden" name="action" value="delete_menu">
                                                     <input type="hidden" name="id" value="<?= (int)$m['id'] ?>">
                                                     <input type="hidden" name="redirect_to" value="admin.php">
-                                                    <button type="submit" class="px-2 py-1 bg-red-600 hover:bg-red-700 text-white font-bold text-[11px] border border-red-700 transition cursor-pointer" title="Hapus Menu Ini">
-                                                        🗑️ Hapus
+                                                    <button type="submit" class="px-2.5 py-1.5 bg-red-600 hover:bg-red-700 text-white font-bold text-[11px] rounded-lg transition cursor-pointer" title="Hapus Menu Ini">
+                                                        🗑️
                                                     </button>
                                                 </form>
                                             </div>
@@ -347,15 +349,15 @@ $dbStatus = (isset($conn) && !$conn->connect_error);
         </div>
 
         <!-- TABEL RIWAYAT PESANAN MASUK DARI PELANGGAN (READ) -->
-        <div class="bg-white border-3 border-stone-900 shadow-[8px_8px_0px_0px_#7F5539] overflow-hidden mb-8">
-            <div class="p-4 sm:p-5 bg-stone-900 text-cream-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b-2 border-emerald-500">
+        <div class="bg-white rounded-3xl border border-cream-200/90 shadow-lg overflow-hidden mb-8">
+            <div class="p-5 bg-stone-900 text-cream-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b-2 border-emerald-500">
                 <div>
-                    <span class="text-[10px] font-bold bg-emerald-500 text-stone-950 px-2 py-0.5 uppercase tracking-wider inline-block">ORDER MONITOR</span>
+                    <span class="text-[10px] font-bold bg-emerald-500 text-stone-950 px-2.5 py-0.5 uppercase tracking-wider rounded-full inline-block">ORDER MONITOR</span>
                     <h2 class="font-heading font-black text-lg text-white mt-1">📋 Riwayat Pesanan Masuk (Tabel `pesanan`)</h2>
                     <p class="text-xs text-stone-400">Total: <strong class="text-white"><?= $countPesanan ?> Pesanan</strong> &bull; Total Omset: <strong class="text-emerald-400"><?= formatRupiah($totalOmset) ?></strong></p>
                 </div>
                 <div class="flex items-center gap-2">
-                    <button onclick="location.reload()" class="px-3 py-1.5 bg-coffee hover:bg-coffee-dark text-white font-bold text-xs border border-coffee-light transition cursor-pointer">
+                    <button onclick="location.reload()" class="px-4 py-2 bg-coffee hover:bg-coffee-dark text-white font-bold text-xs rounded-full shadow-xs transition cursor-pointer">
                         🔄 Refresh Data Pesanan
                     </button>
                 </div>
@@ -364,7 +366,7 @@ $dbStatus = (isset($conn) && !$conn->connect_error);
             <div class="overflow-x-auto">
                 <table class="w-full text-left border-collapse text-xs">
                     <thead>
-                        <tr class="bg-cream-200 border-b-2 border-stone-900 font-bold text-stone-900">
+                        <tr class="bg-cream-100/70 border-b border-cream-200 font-bold text-stone-900">
                             <th class="p-3 w-12 text-center">ID</th>
                             <th class="p-3">Waktu Pesan</th>
                             <th class="p-3">Nama Pemesan</th>
@@ -375,7 +377,7 @@ $dbStatus = (isset($conn) && !$conn->connect_error);
                             <th class="p-3 text-right">Total Harga</th>
                         </tr>
                     </thead>
-                    <tbody class="divide-y divide-cream-300">
+                    <tbody class="divide-y divide-cream-200">
                         <?php if (empty($orderList)): ?>
                             <tr>
                                 <td colspan="8" class="p-8 text-center text-stone-500 font-bold">
@@ -384,12 +386,12 @@ $dbStatus = (isset($conn) && !$conn->connect_error);
                             </tr>
                         <?php else: ?>
                             <?php foreach ($orderList as $ord): ?>
-                                <tr class="hover:bg-cream-100/60 transition">
+                                <tr class="hover:bg-cream-50/80 transition">
                                     <td class="p-3 text-center font-mono font-bold text-stone-400">#<?= htmlspecialchars($ord['id']) ?></td>
                                     <td class="p-3 text-stone-600 whitespace-nowrap"><?= htmlspecialchars($ord['waktu_pesan']) ?></td>
                                     <td class="p-3 font-bold text-stone-900"><?= htmlspecialchars($ord['nama_pemesan']) ?></td>
-                                    <td class="p-3 font-semibold text-coffee-dark"><?= htmlspecialchars($ord['menu_pilihan']) ?></td>
-                                    <td class="p-3 text-center font-bold bg-cream-100/50"><?= (int)$ord['jumlah'] ?></td>
+                                    <td class="p-3 font-semibold text-coffee"><?= htmlspecialchars($ord['menu_pilihan']) ?></td>
+                                    <td class="p-3 text-center font-bold bg-cream-100/40 rounded"><?= (int)$ord['jumlah'] ?></td>
                                     <td class="p-3 text-stone-600">
                                         <div><?= htmlspecialchars($ord['level_gula']) ?> &bull; <?= htmlspecialchars($ord['ukuran']) ?></div>
                                         <?php if (!empty($ord['topping']) && $ord['topping'] !== 'Tanpa Topping'): ?>
@@ -409,13 +411,13 @@ $dbStatus = (isset($conn) && !$conn->connect_error);
     </main>
 
     <!-- MODAL EDIT MENU (UPDATE) -->
-    <div id="adminEditModal" class="fixed inset-0 z-50 bg-stone-900/80 backdrop-blur-xs hidden items-center justify-center p-4">
-        <div class="bg-white max-w-lg w-full p-6 border-4 border-stone-900 shadow-[10px_10px_0px_0px_#7F5539] relative max-h-[90vh] overflow-y-auto">
-            <button type="button" onclick="$('#adminEditModal').fadeOut(150)" class="absolute top-4 right-4 text-stone-600 hover:text-stone-900 font-bold text-xs px-2 py-1 border-2 border-stone-800 hover:bg-cream-200 transition cursor-pointer">
-                TUTUP [X]
+    <div id="adminEditModal" class="fixed inset-0 z-50 bg-stone-900/60 backdrop-blur-xs hidden items-center justify-center p-4">
+        <div class="bg-white max-w-lg w-full p-6 sm:p-7 rounded-3xl border border-cream-200 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+            <button type="button" onclick="$('#adminEditModal').fadeOut(150)" class="absolute top-5 right-5 text-stone-500 hover:text-stone-900 font-bold text-xs w-8 h-8 rounded-full bg-cream-100 hover:bg-cream-200 flex items-center justify-center transition cursor-pointer">
+                ✕
             </button>
 
-            <span class="text-[10px] font-bold bg-amber-500 text-stone-950 px-2 py-0.5 uppercase tracking-wider inline-block">UPDATE MENU</span>
+            <span class="text-[10px] font-bold bg-amber-500 text-stone-950 px-2.5 py-0.5 rounded-full uppercase tracking-wider inline-block">UPDATE MENU</span>
             <h3 class="font-heading font-black text-lg text-stone-900 mb-1 mt-1">✏️ Edit Informasi Menu</h3>
             <p class="text-xs text-stone-500 mb-4">Perubahan akan langsung disimpan ke baris tabel MySQL.</p>
 
@@ -426,13 +428,13 @@ $dbStatus = (isset($conn) && !$conn->connect_error);
 
                 <div>
                     <label class="block font-bold text-stone-800 mb-1">Nama Menu *</label>
-                    <input type="text" name="nama" id="editModalNama" required class="w-full p-2.5 bg-cream-50 border-2 border-cream-300 font-bold text-stone-900 outline-none focus:border-coffee">
+                    <input type="text" name="nama" id="editModalNama" required class="w-full px-3.5 py-2.5 bg-cream-50 rounded-xl border border-cream-300 font-bold text-stone-900 outline-none focus:border-coffee transition">
                 </div>
 
                 <div class="grid grid-cols-2 gap-3">
                     <div>
                         <label class="block font-bold text-stone-800 mb-1">Kategori *</label>
-                        <select name="kategori" id="editModalKategori" required class="w-full p-2.5 bg-white border-2 border-cream-300 font-bold outline-none focus:border-coffee">
+                        <select name="kategori" id="editModalKategori" required class="w-full px-3.5 py-2.5 bg-white rounded-xl border border-cream-300 font-bold outline-none focus:border-coffee transition">
                             <option value="coffee">Coffee</option>
                             <option value="non-coffee">Non Coffee</option>
                             <option value="snack">Menu Snack</option>
@@ -440,24 +442,24 @@ $dbStatus = (isset($conn) && !$conn->connect_error);
                     </div>
                     <div>
                         <label class="block font-bold text-stone-800 mb-1">Harga (Rp) *</label>
-                        <input type="number" name="harga" id="editModalHarga" required min="1000" step="500" class="w-full p-2.5 bg-white border-2 border-cream-300 font-bold outline-none focus:border-coffee">
+                        <input type="number" name="harga" id="editModalHarga" required min="1000" step="500" class="w-full px-3.5 py-2.5 bg-white rounded-xl border border-cream-300 font-bold outline-none focus:border-coffee transition">
                     </div>
                 </div>
 
                 <div class="grid grid-cols-2 gap-3">
                     <div>
                         <label class="block font-bold text-stone-800 mb-1">Badge Promosi</label>
-                        <input type="text" name="badge" id="editModalBadge" class="w-full p-2 bg-white border border-cream-300 outline-none focus:border-coffee">
+                        <input type="text" name="badge" id="editModalBadge" class="w-full px-3.5 py-2 bg-white rounded-xl border border-cream-300 outline-none focus:border-coffee transition">
                     </div>
                     <div>
                         <label class="block font-bold text-stone-800 mb-1">Subjudul Varian</label>
-                        <input type="text" name="subjudul" id="editModalSubjudul" class="w-full p-2 bg-white border border-cream-300 outline-none focus:border-coffee">
+                        <input type="text" name="subjudul" id="editModalSubjudul" class="w-full px-3.5 py-2 bg-white rounded-xl border border-cream-300 outline-none focus:border-coffee transition">
                     </div>
                 </div>
 
                 <div>
                     <label class="block font-bold text-stone-800 mb-1">Deskripsi Menu</label>
-                    <textarea name="deskripsi" id="editModalDeskripsi" rows="3" class="w-full p-2 bg-white border border-cream-300 outline-none focus:border-coffee"></textarea>
+                    <textarea name="deskripsi" id="editModalDeskripsi" rows="3" class="w-full px-3.5 py-2.5 bg-white rounded-xl border border-cream-300 outline-none focus:border-coffee transition"></textarea>
                 </div>
 
                 <div class="flex items-center gap-2 pt-1">
@@ -465,8 +467,8 @@ $dbStatus = (isset($conn) && !$conn->connect_error);
                     <label for="editModalFeatured" class="font-bold text-stone-800 select-none cursor-pointer">Jadikan Menu Unggulan (Featured)</label>
                 </div>
 
-                <div class="pt-3">
-                    <button type="submit" class="w-full py-3 bg-amber-600 hover:bg-amber-700 text-white font-black uppercase tracking-wider border-2 border-stone-900 shadow-[4px_4px_0px_0px_#1c1917] hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5 transition cursor-pointer">
+                <div class="pt-2">
+                    <button type="submit" class="w-full py-3.5 bg-amber-600 hover:bg-amber-700 text-white font-black uppercase tracking-wider rounded-xl shadow-md hover:shadow-lg transition cursor-pointer">
                         Simpan Perubahan ke Database &rarr;
                     </button>
                 </div>
@@ -475,10 +477,10 @@ $dbStatus = (isset($conn) && !$conn->connect_error);
     </div>
 
     <!-- Admin Footer -->
-    <footer class="bg-stone-900 text-stone-400 py-6 text-center text-xs border-t-2 border-stone-800 mt-auto">
+    <footer class="bg-stone-900 text-stone-400 py-6 text-center text-xs border-t border-stone-800 mt-auto">
         <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2">
             <p>&copy; <?= date('Y') ?> <strong><?= htmlspecialchars($outlet['nama']) ?></strong> &bull; Panel Admin CRUD Database</p>
-            <p>Pengembang: <strong class="text-white">Nayla Azzahra R</strong> (Kelas C - Angkatan 2025, FT-UNM)</p>
+            <p>Pengembang: <strong class="text-white">Nayla Azzahra R</strong> (Kelas C - Angkatan 2025, Teknik Komputer FT-UNM)</p>
         </div>
     </footer>
 

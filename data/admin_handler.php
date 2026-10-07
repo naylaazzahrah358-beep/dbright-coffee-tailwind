@@ -49,7 +49,7 @@ if (isset($_GET['logout_admin'])) {
 $autoOpenPesanan = !empty($_GET['lihat_pesanan']);
 
 // 2. PROSES FORM POST ADMIN (LOGIN & CRUD)
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
+if (($_SERVER['REQUEST_METHOD'] ?? '') === 'POST' && isset($_POST['action'])) {
     $action = $_POST['action'];
     $redirectTarget = !empty($_POST['redirect_to']) ? $_POST['redirect_to'] : (!empty($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : 'index.php#menu');
 
