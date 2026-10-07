@@ -52,8 +52,8 @@
                         📋 Riwayat Pesanan (<?= $countPesanan ?>)
                     </button>
                     <span class="text-stone-400">&bull;</span>
-                    <a href="index.php?toggle_admin=1" class="text-stone-700 hover:text-coffee underline inline-flex items-center gap-1">
-                        ⚙️ <?= $isAdmin ? 'Mode Admin: Aktif [Matikan]' : 'Mode Admin (Kelola Menu)' ?>
+                    <a href="admin.php" class="text-stone-700 hover:text-coffee underline inline-flex items-center gap-1">
+                        ⚙️ Panel Admin (CRUD Menu & Pesanan)
                     </a>
                 </div>
 

@@ -40,7 +40,7 @@
                     <li><a href="#testimoni" class="hover:text-coffee-light">Testimoni Pelanggan</a></li>
                     <li><a href="#faq" class="hover:text-coffee-light">Pertanyaan (FAQ)</a></li>
                     <li><a href="#kontak" class="hover:text-coffee-light">Lokasi & WhatsApp</a></li>
-                    <li><a href="index.php?admin=1#menu" class="text-amber-400 font-bold hover:underline">Mode Admin (Kelola Menu & Pesanan) ⚙️</a></li>
+                    <li><a href="admin.php" class="text-amber-400 font-bold hover:underline">Panel Admin (CRUD Menu & Pesanan) ⚙️</a></li>
                 </ul>
             </div>
 

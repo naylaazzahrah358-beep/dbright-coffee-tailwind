@@ -51,6 +51,7 @@ $autoOpenPesanan = !empty($_GET['lihat_pesanan']);
 // 2. PROSES FORM POST ADMIN (LOGIN & CRUD)
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
     $action = $_POST['action'];
+    $redirectTarget = !empty($_POST['redirect_to']) ? $_POST['redirect_to'] : (!empty($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : 'index.php#menu');
 
     // --- A. LOGIN ADMIN ---
     if ($action === 'admin_login') {
@@ -63,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
         } else {
             $_SESSION['flash'] = ['type' => 'error', 'message' => 'Username atau Password salah! (Default: admin / admin123)'];
         }
-        header('Location: index.php#menu');
+        header("Location: $redirectTarget");
         exit;
     }
 
@@ -97,7 +98,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
                 $stmt->close();
             }
         }
-        header('Location: index.php#menu');
+        header("Location: $redirectTarget");
         exit;
     }
 
@@ -132,7 +133,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
                 $stmt->close();
             }
         }
-        header('Location: index.php#menu');
+        header("Location: $redirectTarget");
         exit;
     }
 
@@ -151,7 +152,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
                 $stmt->close();
             }
         }
-        header('Location: index.php#menu');
+        header("Location: $redirectTarget");
         exit;
     }
 
@@ -194,7 +195,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
         $stmtInsert->close();
 
         $_SESSION['flash'] = ['type' => 'success', 'message' => '24 Menu default D\'Bright Coffee berhasil dipulihkan!'];
-        header('Location: index.php#menu');
+        header("Location: $redirectTarget");
         exit;
     }
 }

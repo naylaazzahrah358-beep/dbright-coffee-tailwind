@@ -53,21 +53,15 @@ $statusAwal = getStatusOperasional();
                 <a href="#testimoni" class="hover:text-coffee transition-colors">Testimoni</a>
                 <a href="#faq" class="hover:text-coffee transition-colors">FAQ</a>
                 <a href="#kontak" class="hover:text-coffee transition-colors">Lokasi & Kontak</a>
-                <!-- Tombol Riwayat Pesanan (Terpadu) -->
+                <!-- Tombol Riwayat Pesanan -->
                 <button type="button" class="btn-buka-pesanan px-2.5 py-1 text-xs bg-amber-100 hover:bg-amber-200 text-stone-900 border border-amber-400 font-bold transition cursor-pointer" title="Lihat riwayat pesanan pelanggan dari database MySQL">
                     📋 Pesanan (<?= $countPesanan ?>)
                 </button>
 
-                <!-- Tombol Mode Admin (1-Klik Terpadu di Halaman Utama) -->
-                <?php if ($isAdmin): ?>
-                    <a href="index.php?toggle_admin=1" class="px-2.5 py-1 text-xs bg-emerald-700 hover:bg-red-600 text-white font-bold transition flex items-center gap-1" title="Mode Admin Aktif - Klik untuk Matikan">
-                        <span>🛡️ Admin: AKTIF</span>
-                    </a>
-                <?php else: ?>
-                    <a href="index.php?toggle_admin=1" class="px-2.5 py-1 text-xs bg-stone-900 hover:bg-amber-600 text-white font-bold transition flex items-center gap-1" title="Klik untuk mengaktifkan kontrol admin (edit, tambah, hapus menu)">
-                        <span>⚙️ Admin: OFF</span>
-                    </a>
-                <?php endif; ?>
+                <!-- Tombol Panel Admin CRUD Langsung -->
+                <a href="admin.php" class="px-3 py-1 text-xs bg-stone-900 hover:bg-coffee text-white font-bold transition flex items-center gap-1 border border-stone-800" title="Buka Halaman Panel Admin CRUD Menu & Pesanan">
+                    <span>⚙️</span> Panel Admin
+                </a>
             </nav>
 
             <!-- Action Button -->
@@ -97,15 +91,9 @@ $statusAwal = getStatusOperasional();
             <button type="button" onclick="$('#mobileMenu').slideUp(); $('#modalRiwayatPesanan').fadeIn(150);" class="text-left hover:text-coffee py-1 text-coffee font-bold">
                 📋 Riwayat Pesanan Masuk (<?= $countPesanan ?>)
             </button>
-            <?php if ($isAdmin): ?>
-                <a href="index.php?toggle_admin=1" class="text-left text-red-600 font-bold py-1">
-                    🛡️ Admin: AKTIF (Klik untuk Matikan ✕)
-                </a>
-            <?php else: ?>
-                <a href="index.php?toggle_admin=1" class="text-left text-amber-700 font-bold py-1">
-                    ⚙️ Aktifkan Mode Admin (Kelola Menu)
-                </a>
-            <?php endif; ?>
+            <a href="admin.php" class="text-left text-stone-900 hover:text-coffee font-bold py-1 flex items-center gap-1.5">
+                <span>⚙️</span> Buka Panel Admin (CRUD Menu & Pesanan)
+            </a>
             <div class="pt-3 border-t border-cream-200">
                 <button class="btn-order-item w-full bg-coffee text-white font-bold py-3 text-center cursor-pointer" data-name="Signature D'Bright" data-price="15000" data-category="coffee">
                     Pesan via WhatsApp
